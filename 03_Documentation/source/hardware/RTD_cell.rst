@@ -4,7 +4,7 @@ Residence Time Distribution Measurement Cell
 Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
 -   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells)
-
+-   `base plate bricklet casing <../../../01_CAD/base_plate.stl>`_
 
 Required Hardware Components
 -------------------------------
@@ -20,7 +20,7 @@ Required Hardware Components
 -	External power supply
 -	USB-A to USB-C cable
 -	2x LEDs
--	2x Photo resistors
+-   `2 x photoresistors <../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
 -	2x Resistors (10 kΩ)
 -	2x Connections between in/out and master brick
 -	2x small screws for the top of the analytic cells (M3)
