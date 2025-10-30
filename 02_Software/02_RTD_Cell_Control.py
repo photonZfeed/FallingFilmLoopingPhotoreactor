@@ -13,17 +13,18 @@ import datetime
 import numpy as np
 
 
-# Konfigurationsparameter für das Tinkerforge-Setup
+# configuration parameters for Tinkerforge setup
 HOST = "localhost"
 PORT = 4223
-UID_DUAL_ANALOG_IN = "Mmj"  # Ändere XYZ zu deiner UID für den Industrial Dual Analog In 2.1
-UID_ANALOG_OUT = "Ygt"      # Ändere ABC zu deiner UID für den Analog Out 2.0
+UID_DUAL_ANALOG_IN = "Mmj"  # Change to your UID for the Industrial Dual Analog In 2.1
+UID_ANALOG_OUT = "Ygt"      # Change to your UID for the Analog Out 2.0
 
 class DynamicPlot(QMainWindow):
+    """Main window class for dynamic plotting of the RTD data."""
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle('Dynamischer Plot mit PyQt5 und Tinkerforge')
+        self.setWindowTitle('Dynamic Plot with PyQt5 and Tinkerforge')
         self.setGeometry(100, 100, 800, 600)
 
         self.central_widget = QWidget()
@@ -91,13 +92,16 @@ class DynamicPlot(QMainWindow):
 
 
     def start_LED(self):
-        self.analog_out_v2.set_enabled(True)  # LED starten
+        """Starts the LED."""
+
+        self.analog_out_v2.set_enabled(True)  # turn on LED
         print('LED on. Please wait 60 seconds before you start the measurement.')
         time.sleep(2)
-        # print('You can start the measurement now.')
 
 
     def start_acquisition(self):
+        """Starts the data acquisition."""
+
         self.start_time = time.time()
         # self.set_reference()
         voltage_0, voltage_1 = self.get_voltage()
@@ -108,16 +112,26 @@ class DynamicPlot(QMainWindow):
         print('Reference signal at the start:' + str(self.initial_voltage_0) + 'mV and ' + str(self.initial_voltage_1)+ 'mV')
 
     def stop_LED(self):
-            self.analog_out_v2.set_enabled(False)  # LED starten
-            print('LED off.')
-        
+        """Turns off the LED."""
+        self.analog_out_v2.set_enabled(False)  # turn off LED
+        print('LED off.')
 
     def get_voltage(self):
-        voltage_0 = self.ida.get_voltage(0)   # Kanal 0 in mV
-        voltage_1 = self.ida.get_voltage(1)   # Kanal 1 in mV
+        """Retrieves the voltage readings from both channels.
+        
+        Returns:
+            Voltage for channel 0 and channel 1 in mV.
+        """
+        voltage_0 = self.ida.get_voltage(0)   # Channel 0 in mV
+        voltage_1 = self.ida.get_voltage(1)   # Channel 1 in mV
         return voltage_0, voltage_1
     
     def get_concentration(self):
+        """Calculates the concentration based on the voltage.
+        
+        Returns:
+            Concentration for channel 0 and channel 1.
+        """
         voltage0 = self.ida.get_voltage(0)  
         voltage1 = self.ida.get_voltage(1)      
         # conc1 = (- self.dConc_dVoltage_constant[0] * voltage0 + self.dConc_dVoltage_constant[0] *self.initial_voltage_0)/1000 #Concentration of Product VIS 1 in mol / L
@@ -133,6 +147,11 @@ class DynamicPlot(QMainWindow):
 
 
     def get_signal(self):
+        """Calculates the adjusted voltage signal.
+        
+        Returns:
+            Adjusted voltage for channel 0 and channel 1.
+        """
         voltage_0 = self.ida.get_voltage(0)
         voltage_1 = self.ida.get_voltage(1)
 
@@ -144,6 +163,7 @@ class DynamicPlot(QMainWindow):
 
     
     def update_plot(self):
+        """Updates the plot with new data."""
         current_time = time.time() - self.start_time
         voltage_0, voltage_1 = self.get_voltage()
         # concentration1, concentration2 = self.get_concentration()
@@ -170,13 +190,15 @@ class DynamicPlot(QMainWindow):
         self.canvas.draw()
 
     def save_values(self):
-        # Öffne einen Dialog, um den Speicherort und Dateinamen zu wählen
+        """Saves the collected data to a CSV file."""
+
+        # Open a file dialog to select the save location
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        file_path, _ = QFileDialog.getSaveFileName(self, "Speichern unter", "", "CSV Files (*.csv);;All Files (*)", options=options)
-        
+        file_path, _ = QFileDialog.getSaveFileName(self, "Save As", "", "CSV Files (*.csv);;All Files (*)", options=options)
+
         if file_path:
-            # Organisiere die Daten in einem Dictionary
+            # Organize the data into a dictionary
             data = {
                 'Timestamp': self.timestamps,
                 'Time': self.x_data,
@@ -187,11 +209,11 @@ class DynamicPlot(QMainWindow):
                 # 'Concentration Channel 0': self.data_conc_1,
                 # 'Concentration Channel 1': self.data_conc_2
             }
-            
-            # Konvertiere das Dictionary in ein pandas DataFrame
+
+            # Convert the dictionary into a pandas DataFrame
             df = pd.DataFrame(data)
-            
-            # Speichere das DataFrame als CSV-Datei
+
+            # Save the DataFrame as a CSV file
             df.to_csv(file_path, index=False, decimal=',')
             
             print(f"Data successfully saved in: {file_path}")           # IMPORTANT: When saving the file, put .csv in the file name to gain the right data-type!

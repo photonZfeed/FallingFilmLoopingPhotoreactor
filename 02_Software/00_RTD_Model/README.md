@@ -2,7 +2,7 @@
 
 ## Summary
 
-This repository contains the residence time distribution (RTD) analysis of a Falling Film Loop Photoreactor.
+This subfolder contains the residence time distribution (RTD) analysis of a Falling Film Loop Photoreactor.
 
 ## Contents
 
