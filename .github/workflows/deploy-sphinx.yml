@@ -32,8 +32,6 @@ jobs:
 
       - name: Build Sphinx HTML
         run: |
-          # source dir: 03_Documentation/source
-          # output dir (HTML): 03_Documentation/build/html
           sphinx-build -b html 03_Documentation/source 03_Documentation/build/html
 
       - name: Add .nojekyll so Pages serve files like _static/ correctly
