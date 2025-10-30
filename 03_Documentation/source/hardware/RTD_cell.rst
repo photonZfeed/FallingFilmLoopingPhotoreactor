@@ -9,7 +9,7 @@ Required 3D-Printed Components (Click to Download)
 Required Hardware Components
 -------------------------------
 
-.. figure:: ../_static/figures/peripheral_modules/membrane_pump_extension/bricklets.png
+.. figure:: ./_static/figures/RTD_cell/bricklets.png
    :alt: Required Bricklets.
    :align: center
    :width: 90%
@@ -33,7 +33,7 @@ Required Hardware Components
 Assembly Instructions
 ------------------------
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/Cell_components.png
+.. figure:: ./_static/figures/RTD_cell/Cell_components.png
    :alt: Components for connecting the analytic cells.
    :align: center
    :width: 90%
@@ -45,7 +45,7 @@ Assembly Instructions
 3. Put the photoresistors in the photoresistor half cells (photoresistor in the whole, wires to the outside of the cell).
 4. Use the bigger screws to fix one LED to a photoresistor halfcell and repeat with the other cells.
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/bricklets.png
+.. figure:: ./_static/figures/RTD_cell/bricklets.png
    :alt: Bricklets for the setup
    :align: center
    :width: 90%
@@ -56,7 +56,7 @@ Assembly Instructions
 5. Connect the photoresistors to the industrial dual analog in bricklet as shown in Figure 2 with the electrical wires. 
    Make sure to separate the wires apart from the shown connections using the through connectors and/or electrical insulating tape.
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/photoresistors.png
+.. figure:: ./_static/figures/RTD_cell/photoresistors.png
    :alt: Sketch on how to connect the photoresistors to the bricklet.
    :align: center
    :width: 90%
@@ -66,14 +66,14 @@ Assembly Instructions
 
 6. Connect the LEDs to the industrial analog out bricklet as shown in Figure 3 with the electrical wires.
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/LEDs.png
+.. figure:: ./_static/figures/RTD_cell/LEDs.png
    :alt: Sketch on how to connect the LEDs to the bricklet.
    :align: center
    :width: 90%
 
    Figure 4: Sketch on how to connect the LEDs to the bricklet.
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/cables.png
+.. figure:: ./_static/figures/RTD_cell/cables.png
    :alt: Cables to connect the bricklets.
    :align: center
    :width: 90%
@@ -84,7 +84,7 @@ Assembly Instructions
 
 The setup should look like this afterwards:
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/Alex_setup.png
+.. figure:: ./_static/figures/RTD_cell/Alex_setup.png
    :alt: Example setup.
    :align: center
    :width: 90%
@@ -112,7 +112,7 @@ The UIDs for industrial analog in and out can be checked with brickviewer, once 
 To open the measurement window, run the code.
 The following window should open:
 
-.. figure:: ../_static/figures/peripheral_modules/RTD_cell/Measurement_window.png
+.. figure:: ./_static/figures/RTD_cell/Measurement_window.png
    :alt: Measurement window.
    :align: center
    :width: 90%

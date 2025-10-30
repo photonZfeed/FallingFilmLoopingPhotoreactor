@@ -13,6 +13,6 @@ This documentation provides a modular and characterized open source Falling Film
    :maxdepth: 2
    :caption: Contents:
 
-   RTD_cell.rst
+   hardware/index.rst
 
 
