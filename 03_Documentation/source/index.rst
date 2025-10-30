@@ -3,6 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
 FallingFilmLoopingPhotoreactor documentation
 ============================================
 
@@ -14,5 +15,6 @@ This documentation provides a modular and characterized open source Falling Film
    :caption: Contents:
 
    hardware/index.rst
+   software/index.rst
 
 
