@@ -1,0 +1,49 @@
+name: Build and deploy Sphinx docs to GitHub Pages
+
+# Run on pushes to main (adjust branch name if your default is different) and manual dispatch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r 03_Documentation/requirements.txt
+
+      - name: Build Sphinx HTML
+        run: |
+          # source dir: 03_Documentation/source
+          # output dir (HTML): 03_Documentation/build/html
+          sphinx-build -b html 03_Documentation/source 03_Documentation/build/html
+
+      - name: Add .nojekyll so Pages serve files like _static/ correctly
+        run: |
+          touch 03_Documentation/build/html/.nojekyll
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 03_Documentation/build/html
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
