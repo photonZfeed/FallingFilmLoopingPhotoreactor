@@ -1,0 +1,8 @@
+ICIW_Plots
+scipy<1.14.0
+rtdpy
+matplotlib
+numpy
+pandas
+scikit_learn
+ipykernel
