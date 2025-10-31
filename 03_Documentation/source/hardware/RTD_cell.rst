@@ -113,7 +113,7 @@ As a tracer for the measurement, Methylene Blue with a concentration of 1 g/L fo
 Code 
 ^^^^^^
 
-To operate the setup, the RTD cell operating script `rtd_cell_control.py <../software/rtd_cell_control.py>`_ is required.
+To operate the setup, the RTD cell operating script `rtd_cell_control.py <../../../02_Software/02_RTD_Cell_Control.py>`_ is required.
 
 Note that for the operation of the TInkerforge components the `Brick Deamon <https://www.tinkerforge.com/de/doc/Software/Brickd.html>`_ is required.
 
