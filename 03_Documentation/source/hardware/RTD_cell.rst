@@ -30,10 +30,10 @@ Required Hardware Components
 -   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
 -	`2x resistors (10 kΩ) <../../../00_Materials/00_Electronics/05_Small_Parts/resistor.txt>`_
 -  `M3 screws and nuts <../../../00_Materials/01_Accessories/00_M3_Set/M3_screw_set.txt>`_
-   -	2x Connections between in/out and master brick_
-   -	2x small screws for the top of the analytic cells (M3)_
-   -	8x screws for the sides of the analytic cells (M3)_
-   -	8x Nuts (+2x nuts in the analytic halfcells for the LEDs)_
+   -   2x Connections between in/out and master brick
+   -   2x small screws for the top of the analytic cells (M3)
+   -   8x screws for the sides of the analytic cells (M3)
+   -   8x Nuts (+2x nuts in the analytic halfcells for the LEDs)
 -  `M3 nylon spacer <../../../00_Materials/01_Accessories/01_Nylon_Spacer/nylon_spacer.txt>`_
 -  `electrical wire (preferably in 2 different colors) <../../../00_Materials/00_Electronics/05_Small_Parts/silicone_wire.txt>`_
 -  `Banana 4 mm coupling <../../../00_Materials/00_Electronics/05_Small_Parts/banana_plug_female.txt>`_
