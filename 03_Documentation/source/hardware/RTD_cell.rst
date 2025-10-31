@@ -4,7 +4,15 @@ Residence Time Distribution Measurement Cell
 Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
 -   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells)
+   -   1 mm tubing top
+   -   1 mm tubing bottom
+   -   2 mm tubing top
+   -   2 mm tubing bottom
+   -   3 mm tubing top
+   -   3 mm tubing bottom
 -   `base plate bricklet casing <../../../../00_CAD/base_plate.stl>`_
+-   `Master extension casing <../../../../00_CAD/case_master_extension.stl>`_
+-   `RTD cell extension casing <../../../../00_CAD/case_RTD_cell_extension.stl>`_
 
 Required Hardware Components
 -------------------------------
