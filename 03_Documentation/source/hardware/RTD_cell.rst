@@ -113,9 +113,9 @@ As a tracer for the measurement, Methylene Blue with a concentration of 1 g/L fo
 Code 
 ^^^^^^
 
-To operate the setup, the following the Python RTD cell operating script `rtd_cell_control.py <../software/rtd_cell_control.py>`_ is required
+To operate the setup, the RTD cell operating script `rtd_cell_control.py <../software/rtd_cell_control.py>`_ is required.
 
-Note that for the operation of the TInkerforge components the `Brick Deamon <https://www.tinkerforge.com/de/doc/Software/Brickd.html>`_ is required
+Note that for the operation of the TInkerforge components the `Brick Deamon <https://www.tinkerforge.com/de/doc/Software/Brickd.html>`_ is required.
 
 Make sure all needed packages for the code are installed and the UID for industrial analog in and out in the code is changed to the once used in the setup.
 The UIDs for industrial analog in and out can be checked with `Brick Viewer <https://www.tinkerforge.com/de/doc/Software/Brickv.html>`_, once the setup is connected to the PC.
