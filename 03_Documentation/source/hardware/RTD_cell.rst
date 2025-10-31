@@ -29,7 +29,7 @@ Required Hardware Components
 -	 `2x LEDs <../../../00_Materials/00_Electronics/05_Small_Parts/LED.txt>`_
 -   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
 -	`2x resistors (10 kΩ) <../../../00_Materials/00_Electronics/05_Small_Parts/resistor.txt>`_
--  `M3 screws and nuts <../../../00_Materials/01_Accessories/00_M3_Set/M3_screw_set.txt>`
+-  `M3 screws and nuts <../../../00_Materials/01_Accessories/00_M3_Set/M3_screw_set.txt>`_
    -	2x Connections between in/out and master brick
    -	2x small screws for the top of the analytic cells (M3)
    -	8x screws for the sides of the analytic cells (M3)
