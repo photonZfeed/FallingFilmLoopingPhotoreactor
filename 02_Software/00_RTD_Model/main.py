@@ -36,8 +36,7 @@ cycle = plt.rcParams['axes.prop_cycle'].by_key()['color'] # get colors from the 
 plt.rcParams.update({'axes.labelsize': 10, 'xtick.labelsize': 10, 'ytick.labelsize': 10, 'legend.fontsize': 10, 'axes.titlesize': 10})
 
 # define paths
-project_root = pathlib.Path.cwd() / "FallingFilmLoopingPhotoreactor"
-project_root = project_root.resolve()
+project_root = pathlib.Path.cwd().parent.parent
 
 data_path = project_root / "01_Experiments" / "00_RTD" / "00_External_Flow_Rate_Variation"
 output_path = project_root / "02_Software" / "00_RTD_Model" / "00_Processed_Data"
@@ -449,7 +448,7 @@ def create_comparison_plots(processed_data_list, t_end, colors=cycle, store_path
     # save figure
     if store_path:
         plt.savefig(store_path + "/comparison_plot."+filetype, dpi=300, bbox_inches='tight')
-                
+
 
 # %%
 def create_all_simulated_RTDs_plot(processed_data_list, t_end, store_path=None, filetype="svg"):
@@ -510,49 +509,49 @@ def create_all_simulated_RTDs_plot(processed_data_list, t_end, store_path=None, 
 # # 3. Result Generation
 
 # %%
-# define the end time for the simulations
-t_end = 800
+# # define the end time for the simulations
+# t_end = 800
 
-processed_data_list = []
-# iterate through all files in the experimental_data folder independently of the names
+# processed_data_list = []
+# # iterate through all files in the experimental_data folder independently of the names
 
-for file in pathlib.Path(data_path).glob("*.csv"):
-    processed_data = process_file(file.name, t_end=t_end, path=data_path, window_size=10, Bo_init=1, export_path=output_path)
-    # print flow rate and residence time
-    processed_data_list.append(processed_data)
+# for file in pathlib.Path(data_path).glob("*.csv"):
+#     processed_data = process_file(file.name, t_end=t_end, path=data_path, window_size=10, Bo_init=1, export_path=output_path)
+#     # print flow rate and residence time
+#     processed_data_list.append(processed_data)
 
-# sort the processed data by flow rate
-processed_data_list.sort(key=lambda x: x.attrs["Flow Rate (mL min-1)"])
-
-
-# %%
-# create a dataframe with the flow rates, residence times, and Bodenstein numbers
-flow_rates = [processed_data.attrs["Flow Rate (mL min-1)"] for processed_data in processed_data_list]
-residence_times = [processed_data.attrs["Residence Time (s)"] for processed_data in processed_data_list]
-hydrodynamic_residence_times = [processed_data.attrs["Hydrodynamic Residence Time (s)"] for processed_data in processed_data_list]
-Bodenstein_numbers = [processed_data.attrs["Bodenstein Number (1)"] for processed_data in processed_data_list]
-
-# create a dataframe with the flow rates, residence times, and Bodenstein numbers
-summary_df = pd.DataFrame({
-    "Flow Rate (mL min-1)": flow_rates,
-    "Residence Time (s)": residence_times,
-    "Hydrodynamic Residence Time (s)": hydrodynamic_residence_times,
-    "Bodenstein Number (1)": Bodenstein_numbers
-})
+# # sort the processed data by flow rate
+# processed_data_list.sort(key=lambda x: x.attrs["Flow Rate (mL min-1)"])
 
 
-summary_df.to_csv(output_path + "/summary_table.csv", index=False)  # save the summary dataframe to a csv file
+# # %%
+# # create a dataframe with the flow rates, residence times, and Bodenstein numbers
+# flow_rates = [processed_data.attrs["Flow Rate (mL min-1)"] for processed_data in processed_data_list]
+# residence_times = [processed_data.attrs["Residence Time (s)"] for processed_data in processed_data_list]
+# hydrodynamic_residence_times = [processed_data.attrs["Hydrodynamic Residence Time (s)"] for processed_data in processed_data_list]
+# Bodenstein_numbers = [processed_data.attrs["Bodenstein Number (1)"] for processed_data in processed_data_list]
 
-# print the summary dataframe
-print(summary_df)
+# # create a dataframe with the flow rates, residence times, and Bodenstein numbers
+# summary_df = pd.DataFrame({
+#     "Flow Rate (mL min-1)": flow_rates,
+#     "Residence Time (s)": residence_times,
+#     "Hydrodynamic Residence Time (s)": hydrodynamic_residence_times,
+#     "Bodenstein Number (1)": Bodenstein_numbers
+# })
 
-# %%
-# create the plot for the hydrodynamic and measured residence time and Bodenstein number
-create_tau_Bo_plot(processed_data_list, store_path=figures_path, filetype="png")
 
-# %%
-# create comparison plots for the exit age distribution of different flow rates
-create_comparison_plots(processed_data_list, t_end=t_end, colors=[cycle[0], cycle[2]], store_path=figures_path, filetype="png")
+# summary_df.to_csv(output_path + "/summary_table.csv", index=False)  # save the summary dataframe to a csv file
 
-# %%
-create_all_simulated_RTDs_plot(processed_data_list, t_end=t_end, store_path=figures_path, filetype="png")
+# # print the summary dataframe
+# print(summary_df)
+
+# # %%
+# # create the plot for the hydrodynamic and measured residence time and Bodenstein number
+# create_tau_Bo_plot(processed_data_list, store_path=figures_path, filetype="png")
+
+# # %%
+# # create comparison plots for the exit age distribution of different flow rates
+# create_comparison_plots(processed_data_list, t_end=t_end, colors=[cycle[0], cycle[2]], store_path=figures_path, filetype="png")
+
+# # %%
+# create_all_simulated_RTDs_plot(processed_data_list, t_end=t_end, store_path=figures_path, filetype="png")
