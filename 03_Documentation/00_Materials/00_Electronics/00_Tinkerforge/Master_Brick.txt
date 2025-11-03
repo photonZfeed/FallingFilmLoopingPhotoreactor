@@ -1,4 +1,0 @@
-Hersteller/Manufacturer: 	TinkerForge
-Herstellerreferenz/Manufacturer reference:	 	Master Brick 3.2
-Verkäufer/Supplier: TinkerForge
-link: https://www.tinkerforge.com/en/shop/bricks/master-brick.html

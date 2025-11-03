@@ -22,9 +22,9 @@ Required Hardware Components
    :align: center
    :width: 90%
 
--	`Master brick <../../../00_Materials/00_Electronics/00_Tinkerforge/Master_brick.txt>`_
--	`Industrial analog out bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Analog_Out.txt>`_
--	`Industrial analog in bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Dual_Analog_In.txt>`_
+-	`Master brick <../../../00_Materials/00_Electronics/00_Tinkerforge/Master_brick.rst>`_
+-	`Industrial analog out bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Analog_Out.rst>`_
+-	`Industrial analog in bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Dual_Analog_In.rst>`_
 -	USB-A to USB-C cable
 -	 `2x LEDs <../../../00_Materials/00_Electronics/05_Small_Parts/LED.txt>`_
 -   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_

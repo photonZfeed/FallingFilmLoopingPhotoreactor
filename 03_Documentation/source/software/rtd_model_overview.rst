@@ -1,5 +1,5 @@
-Falling Film Loop Photoreactor RTD
-=================================
+Residence Time Distribution Model Software Overview
+===================================================================
 
 Summary
 -------
@@ -14,7 +14,7 @@ Contents
 - ``main.ipynb``: Jupyter Notebook with RTD analysis code.
 
 Installation
-------------
+--------------
 
 Install the required Python packages using:
 
@@ -23,13 +23,13 @@ Install the required Python packages using:
     pip install --only-binary :all: -r requirements.txt
 
 Requirements
-------------
+--------------
 
-- Python < 3.12
+- Python 3.11
 - All required Python packages are listed in ``requirements.txt``.
 
 Models and Equations
---------------------
+----------------------
 
 To determine the Bodenstein number from the RTD experiments, an axial dispersion model with **closed–closed boundary conditions** [1]_ is fitted to the experimental data. The input signal is modeled as an ideal Dirac pulse, since injection time ≪ residence time.
 
@@ -42,12 +42,12 @@ The mean residence time :math:`\bar{\tau}` is calculated as the first moment of 
     \bar{\tau} = \int_0^\infty t \cdot E_{\mathrm{exp}}(t) \, dt
 
 Results
--------
+--------
 
 The figures and table below summarize the results of the RTD analysis as a function of external flow rate.
 
 Mean Residence Time and Bodenstein number
-----------------------------------------
+------------------------------------------
 
 +---------------------------+------------------------------+--------------------------------------+------------------------+
 | Flow Rate (mL min⁻¹)      | Mean Residence Time (s)      | Hydrodynamic Mean Residence Time (s) | Bodenstein Number (1)  |
@@ -63,26 +63,26 @@ Mean Residence Time and Bodenstein number
 | 40.0                      | 73.21                        | 30.00                                | 0.44                   |
 +---------------------------+------------------------------+--------------------------------------+------------------------+
 
-.. image:: 01_Figures/tau_Bo_plot.png
+.. figure:: ../../../02_Software/00_RTD_Model/01_Figures/tau_Bo_plot.png
     :alt: Figure 1
     :width: 400px
 
 Comparison of Experimental Data and Simulation
-----------------------------------------------
+-----------------------------------------------
 
-.. image:: 01_Figures/comparison_plot.png
+.. image:: ../../../02_Software/00_RTD_Model/01_Figures/comparison_plot.png
     :alt: Comparison of experimental data and simulation
     :width: 800px
 
 Simulated RTD Functions at Increasing Flow Rates
-------------------------------------------------
+-------------------------------------------------
 
-.. image:: 01_Figures/all_simulated_RTDs_plot.png
+.. image:: ../../../02_Software/00_RTD_Model/01_Figures/all_simulated_RTDs_plot.png
     :alt: Simulated RTD functions at increasing flow rates
     :width: 800px
 
 References
-----------
+-----------
 
 .. [1] O. Levenspiel, Chemical reaction engineering. Hauptbd., 3. ed, Wiley, New York Weinheim, 1999.
 .. [2] Flamm, M. rtdpy: A python package for residence time distributions. Journal of Open Source Software, 4(40), 1621 (2019).

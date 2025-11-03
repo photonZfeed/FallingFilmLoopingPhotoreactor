@@ -1,4 +1,0 @@
-Hersteller/Manufacturer: 	TinkerForge
-Herstellerreferenz/Manufacturer reference:	 	Industrial Analog Out Bricklet 2.0
-Verkäufer/Supplier: TinkerForge
-link: https://www.tinkerforge.com/en/shop/industrial-analog-out-v2-bricklet.html
