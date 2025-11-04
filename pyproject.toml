@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "falling-film-looping-photoreactor"
+version = "0.1.0"
+description = "Minimal Python project metadata"
+requires-python = ">=3.8"
+authors = [
+    { name = "Naskar, Kowalczyk et al." }
+]
+dependencies = []
