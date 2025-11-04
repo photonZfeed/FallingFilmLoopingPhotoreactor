@@ -3,7 +3,7 @@ Residence Time Distribution Measurement Cell
 
 Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
--   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells)
+-   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells) consisting of:
    -   `1 mm tubing top <../../../../00_CAD/base_plate.stl>`_
    -   `1 mm tubing bottom <../../../../00_CAD/base_plate.stl>`_
    -   `2 mm tubing top <../../../../00_CAD/base_plate.stl>`_
@@ -22,20 +22,20 @@ Required Hardware Components
    :align: center
    :width: 90%
 
--	`Master brick <../../../00_Materials/00_Electronics/00_Tinkerforge/Master_brick.rst>`_
--	`Industrial analog out bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Analog_Out.rst>`_
--	`Industrial analog in bricklet <../../../00_Materials/00_Electronics/00_Tinkerforge/Industrial_Dual_Analog_In.rst>`_
+- :ref:`Master brick <master_brick_3_2>`
+- :ref:`Industrial Analog Out Bricklet 2.0 <industrial_analog_out_bricklet_2_0>`
+- :ref:`Industrial Dual Analog In Bricklet <industrial_dual_analog_in_bricklet_2_1>`
 -	USB-A to USB-C cable
--	 `2x LEDs <../../../00_Materials/00_Electronics/05_Small_Parts/LED.txt>`_
--   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
--	`2x resistors (10 kΩ) <../../../00_Materials/00_Electronics/05_Small_Parts/resistor.txt>`_
--  `M3 screws and nuts <../../../00_Materials/01_Accessories/00_M3_Set/M3_screw_set.txt>`_
+- :ref:`2x LEDs <led>`
+- :ref:`2 x photoresistors <photoresistor>`
+- :ref:`2x resistors (10 kΩ) <resistor>`
+- :ref:`M3 screws and nuts <m3_set_M3_screw_set>`
    (2x Connections between in/out and master brick, 2x small screws for the top of the analytic cells (M3), 8x screws for the sides of the analytic cells (M3), 8x Nuts (+2x nuts in the analytic halfcells for the LEDs))
--  `M3 nylon spacer <../../../00_Materials/01_Accessories/01_Nylon_Spacer/nylon_spacer.txt>`_
--  `electrical wire (preferably in 2 different colors) <../../../00_Materials/00_Electronics/05_Small_Parts/silicone_wire.txt>`_
--  `Banana 4 mm coupling <../../../00_Materials/00_Electronics/05_Small_Parts/banana_plug_female.txt>`_
--  `Banana 4 mm plug (preferably in 2 different colors) <../../../00_Materials/00_Electronics/05_Small_Parts/banana_plug_male.txt>`_
--  `Wago connectors for photoresistors, resistors and electrical wires <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
+- :ref:`M3 nylon spacer <nylon_spacer>`
+- :ref:`electrical wire (preferably in 2 different colors) <silicone_wire>`
+- :ref:`Banana 4 mm coupling <banana_plug_female>`
+- :ref:`Banana 4 mm plug (preferably in 2 different colors) <banana_plug_male>`
+- :ref:`Wago connectors for photoresistors, resistors and electrical wires <wago_connectors>`
 
 
 Assembly Instructions

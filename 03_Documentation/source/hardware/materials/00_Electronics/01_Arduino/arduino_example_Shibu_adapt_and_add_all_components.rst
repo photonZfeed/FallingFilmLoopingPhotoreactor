@@ -1,3 +1,8 @@
+.. _arduino_uno_q:
+ 
+ Arduino UNO Q
+ =============
+
 :Manufacturer: Arduino S.r.l
 :SKU / Barcode: ABX00162 / 7630049205673
 :Manufacturer reference: Arduino UNO Q

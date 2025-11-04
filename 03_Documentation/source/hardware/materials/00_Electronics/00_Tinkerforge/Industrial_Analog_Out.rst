@@ -1,5 +1,7 @@
+.. _industrial_analog_out_bricklet_2_0:
+
 Industrial Analog Out Bricklet 2.0
----------------------------------
+===================================
 
 :Manufacturer: TinkerForge
 :Manufacturer reference: Industrial Analog Out Bricklet 2.0

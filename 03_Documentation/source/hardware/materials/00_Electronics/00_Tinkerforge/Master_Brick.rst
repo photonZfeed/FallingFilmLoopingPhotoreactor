@@ -1,3 +1,5 @@
+.. _master_brick_3_2:
+
 Master Brick 3.2
 =================
 
