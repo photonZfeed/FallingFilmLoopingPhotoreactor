@@ -4,10 +4,10 @@
    contain the root `toctree` directive.
 
 
-FallingFilmLoopingPhotoreactor documentation
+Falling Film Looping Photoreactor Documentation
 ============================================
 
-This documentation provides a modular and characterized open source Falling Film Looping Photoreactor (FFLPR) concept for Automated Batch Stirred Tank Reactor (ABSTR) and Continuous Stirred Tank Reactor (CSTR) operation. And a Residence Time Distribution (RTD) cell for pulse tracer measurements.
+This documentation provides an overview of the modular and characterized open source Falling Film Looping Photoreactor (FFLPR) concept for Automated Batch Stirred Tank Reactor (ABSTR) and Continuous Stirred Tank Reactor (CSTR) operation. The required hardware and control software for the residence distribution cell are described in the sections :ref:`hardware` and :ref:`software`. In addition, :ref:`software` contains an overview of the implemented residence time distribution model and its Python implementation.
 
 
 .. toctree::

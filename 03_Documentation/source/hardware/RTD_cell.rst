@@ -1,8 +1,10 @@
 Residence Time Distribution Measurement Cell
 ============================================
 
-Required 3D-Printed Components (Click to Download)
+Required 3D-Printed Components
 ---------------------------------------------------
+
+The following components were 3D-printed using PLA. Click to download the respective STL files from the `CAD repository <../../../../00_CAD/>`_:
 -   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells) consisting of:
    -   `1 mm tubing top <../../../../00_CAD/base_plate.stl>`_
    -   `1 mm tubing bottom <../../../../00_CAD/base_plate.stl>`_
