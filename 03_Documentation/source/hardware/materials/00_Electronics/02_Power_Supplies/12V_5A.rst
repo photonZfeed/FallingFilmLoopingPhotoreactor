@@ -2,6 +2,7 @@
 
 Power Supply
 ====================
+
 :Manufacturer: LEICKE
 :ASIN: B001W3UYLY
 :Manufacturer reference: NT03012

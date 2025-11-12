@@ -5,8 +5,8 @@ Hardware
 ========
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Hardware Documentation:
+   :glob:
+   :maxdepth: 1
 
    ./materials/index
-   RTD_cell
+   *

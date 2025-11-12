@@ -1,0 +1,4 @@
+Hersteller/Manufacturer:	Generic
+Herstellerreferenz/Manufacturer reference:	IRF3205 IRF 3205 Power MOSFET 55V 110A TO-220 NEW
+Verkäufer/Supplier:	Amazon
+link:	https://www.amazon.in/Generic-10PCS-IRF3205-Power-MOSFET/dp/B071CTZVH1

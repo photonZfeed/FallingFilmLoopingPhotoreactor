@@ -1,0 +1,8 @@
+Verkäufer/Supplier: robu.in
+SKU: 1090036
+500mA-rated collector current 
+High-voltage outputs: 50V
+Output clamp diodes
+Inputs compatible with various types of logic
+Relay-driver applications
+link: https://robu.in/product/uln2003-ic-smd-package-7-darlington-transistor-arrays-ic/
