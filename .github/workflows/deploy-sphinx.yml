@@ -31,7 +31,7 @@ jobs:
     
     - name: Build Sphinx documentation
       run: |
-        sphinx-build -b html source build/html
+        sphinx-build -M html ./03_Documentation/source ./03_Documentation/build 
     
     - name: Add .nojekyll file
       run: |
