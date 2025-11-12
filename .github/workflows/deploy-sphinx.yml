@@ -25,12 +25,12 @@ jobs:
     
     - name: Install dependencies
       run: |
+        cd 03_Documentation
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
     - name: Build Sphinx documentation
       run: |
-        cd 03_Documentation
         make html
     
     - name: Add .nojekyll file
