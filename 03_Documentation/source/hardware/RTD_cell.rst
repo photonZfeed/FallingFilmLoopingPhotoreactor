@@ -23,7 +23,7 @@ Required Hardware Components
    :alt: Required Bricklets.
    :align: center
    :width: 90%
-
+ 
 - :ref:`Master brick <master_brick_3_2>`
 - :ref:`Industrial Analog Out Bricklet 2.0 <industrial_analog_out_bricklet_2_0>`
 - :ref:`Industrial Dual Analog In Bricklet <industrial_dual_analog_in_bricklet_2_1>`
