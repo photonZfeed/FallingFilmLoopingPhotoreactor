@@ -1,20 +1,10 @@
 Residence Time Distribution Measurement Cell
 ============================================
 
-Required 3D-Printed Components
+Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
-
-The following components were 3D-printed using PLA. Click to download the respective STL files from the `CAD repository <../../../../00_CAD/>`_:
--   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells) consisting of:
-   -   `1 mm tubing top <../../../../00_CAD/base_plate.stl>`_
-   -   `1 mm tubing bottom <../../../../00_CAD/base_plate.stl>`_
-   -   `2 mm tubing top <../../../../00_CAD/base_plate.stl>`_
-   -   `2 mm tubing bottom <../../../../00_CAD/base_plate.stl>`_
-   -   `3 mm tubing top <../../../../00_CAD/base_plate.stl>`_
-   -   `3 mm tubing bottom <../../../../00_CAD/base_plate.stl>`_
+-   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells)
 -   `base plate bricklet casing <../../../../00_CAD/base_plate.stl>`_
--   `Master extension casing <../../../../00_CAD/case_master_extension.stl>`_
--   `RTD cell extension casing <../../../../00_CAD/case_RTD_cell_extension.stl>`_
 
 Required Hardware Components
 -------------------------------
@@ -23,21 +13,21 @@ Required Hardware Components
    :alt: Required Bricklets.
    :align: center
    :width: 90%
- 
-- :ref:`Master brick <master_brick_3_2>`
-- :ref:`Industrial Analog Out Bricklet 2.0 <industrial_analog_out_bricklet_2_0>`
-- :ref:`Industrial Dual Analog In Bricklet <industrial_dual_analog_in_bricklet_2_1>`
+
+-	`Master brick (2.0) <https://www.tinkerforge.com/en/doc/Hardware/Bricks/Master_Brick.html>`_
+-	`Industrial analog out bricklet (2.0) <https://www.tinkerforge.com/de/shop/industrial-analog-out-v2-bricklet.html>`_
+-	`Industrial analog in bricklet (2.1) <https://www.tinkerforge.com/de/shop/industrial-dual-analog-in-v2-bricklet.html>`_
+-	External power supply
 -	USB-A to USB-C cable
-- :ref:`2x LEDs <led>`
-- :ref:`2 x photoresistors <photoresistor>`
-- :ref:`2x resistors (10 kΩ) <resistor>`
-- :ref:`M3 screws and nuts <m3_set_M3_screw_set>`
-   (2x Connections between in/out and master brick, 2x small screws for the top of the analytic cells (M3), 8x screws for the sides of the analytic cells (M3), 8x Nuts (+2x nuts in the analytic halfcells for the LEDs))
-- :ref:`M3 nylon spacer <nylon_spacer>`
-- :ref:`electrical wire (preferably in 2 different colors) <silicone_wire>`
-- :ref:`Banana 4 mm coupling <banana_plug_female>`
-- :ref:`Banana 4 mm plug (preferably in 2 different colors) <banana_plug_male>`
-- :ref:`Wago connectors for photoresistors, resistors and electrical wires <wago_connectors>`
+-	2x LEDs
+-   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
+-	2x Resistors (10 kΩ)
+-	2x Connections between in/out and master brick
+-	2x small screws for the top of the analytic cells (M3)
+-	8x screws for the sides of the analytic cells (M3)
+-	8x Nuts (+2x nuts in the analytic halfcells for the LEDs)
+-  electrical wire (preferably in 2 different colors)
+-  (Through connectors for photoresistors, resistors and electrical wire / Electrical insulating tapes)
 
 
 Assembly Instructions
@@ -90,7 +80,7 @@ Assembly Instructions
 
    Figure 5: Cables to connect the bricklets.
 
-7. Connect the industrial dual analog in and the industrial analog out bricklets to the master brickletr using the Plug cable 7P-10P (note that dependent on the generation of the used Tinkerforge components a Plug cable 7P-7P might be required.
+7. Connect the industrial dual analog in and the industrial analog out bricklets to the master brickletr using the Plug cable 7P-10P.
 
 The setup should look like this afterwards:
 
@@ -115,12 +105,10 @@ As a tracer for the measurement, Methylene Blue with a concentration of 1 g/L fo
 Code 
 ^^^^^^
 
-To operate the setup, the RTD cell operating script `rtd_cell_control.py <../../../02_Software/02_RTD_Cell_Control.py>`_ is required.
-
-Note that for the operation of the TInkerforge components the `Brick Deamon <https://www.tinkerforge.com/de/doc/Software/Brickd.html>`_ is required.
-
+To operate the setup, the following code is needed: Dynamic_Plot_new.py 
+The code is available here: https://gitlab.uni-ulm.de/ag-ziegenbalg/py4modphotoreactor/-/tree/HIWI_Alexander_Saller?ref_type=heads.
 Make sure all needed packages for the code are installed and the UID for industrial analog in and out in the code is changed to the once used in the setup.
-The UIDs for industrial analog in and out can be checked with `Brick Viewer <https://www.tinkerforge.com/de/doc/Software/Brickv.html>`_, once the setup is connected to the PC.
+The UIDs for industrial analog in and out can be checked with brickviewer, once the setup is connected to the PC.
 To open the measurement window, run the code.
 The following window should open:
 

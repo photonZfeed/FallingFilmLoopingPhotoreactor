@@ -1,6 +1,0 @@
-Hersteller/Manufacturer:	EnGeniusLab
-Herstellerreferenz/Manufacturer reference:	555 Timer IC DIP-8 Package   
-Verkäufer/Supplier:	Amazon
-Supply Voltage ranges from 5V to 15V
-Output Current 200mA
-link:	https://www.amazon.in/Embeddinator-Timer-DIP-8-Package-Pack/dp/B0B61B1L5T

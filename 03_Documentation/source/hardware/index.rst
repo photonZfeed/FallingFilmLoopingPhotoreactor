@@ -1,12 +1,12 @@
-.. _hardware:
-
 ========
 Hardware
 ========
 
 .. toctree::
-   :glob:
-   :maxdepth: 1
+   :maxdepth: 3
+   :caption: Hardware Documentation:
 
-   ./materials/index
-   *
+   shibu/abstr_overview/abstr
+   shibu/cstr_overview/cstr_overview
+   RTD_cell.rst
+   
