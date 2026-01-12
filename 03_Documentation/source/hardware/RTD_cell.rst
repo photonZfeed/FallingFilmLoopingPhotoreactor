@@ -3,7 +3,7 @@ Residence Time Distribution Measurement Cell
 
 Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
--   `2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells, available with 1, 2 and 3 mm inner diameter) <../_static/cad/>`_
+-   `2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells, available with 1, 2 and 3 mm inner diameter) <https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/tree/main/00_CAD>`_
 -   `base plate bricklet casing <../_static/cad/base_plate.stl>`_
 
 Required Hardware Components
