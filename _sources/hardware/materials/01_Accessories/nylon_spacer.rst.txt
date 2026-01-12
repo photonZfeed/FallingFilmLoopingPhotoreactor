@@ -1,0 +1,9 @@
+.. _nylon_spacer:
+ 
+Nylon Spacer M3 - 10mm
+=======================
+
+:Manufacturer: DJJRX
+:AISN: B09C21MS45
+:Supplier: Amazon
+:Link: https://www.amazon.de/Sechskantschrauben-Schaltungs-Abstandshalter-M%C3%A4nnlichen-Zylinderabstandshalter/dp/B09C21MS45/ref=pd_sbs_d_sccl_2_1/262-5362731-1851559?pd_rd_w=nseL3&content-id=amzn1.sym.ed01ae3c-7a79-4d83-b635-133a5092f3eb&pf_rd_p=ed01ae3c-7a79-4d83-b635-133a5092f3eb&pf_rd_r=E91W378X96ENV1S08BE7&pd_rd_wg=sIrED&pd_rd_r=4c54cb63-2b9a-44f2-a14d-af7ed6a662d5&pd_rd_i=B09C21MS45&th=1

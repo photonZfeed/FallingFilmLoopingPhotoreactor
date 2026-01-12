@@ -1,0 +1,10 @@
+.. _m3_hex_screw_set:
+
+M3 hex screw set
+===================================
+
+:Manufacturer: Hotott
+:Name: 1110-piece M3 hex screw set
+:Supplier: Amazon
+:ASIN: B08F4SVS2Y
+:Link: https://www.amazon.de/-/en/M3-Stainless-Hexagon-Washers-Storage/dp/B08F4SVS2Y/ref=sr_1_1?crid=3OTOW8GTZ354G&dchild=1&keywords=B08F4SVS2Y&qid=1635521595&qsid=257-2331300-1205907&sprefix=b08f4svs2y+%2Caps%2C64&sr=8-1&sres=B08F4SVS2Y
