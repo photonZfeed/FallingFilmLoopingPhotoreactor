@@ -1,7 +1,7 @@
 CSTR operational circuit
 ========================
 
-.. image:: ../../../_static/shibu_figure/cstr_operation_control.jpeg
+.. image:: ../../../_static/figures/cstr_operation_control.jpeg
    :alt: circuit diagram of CSTR
    :width: 200px
    :align: center
@@ -15,7 +15,7 @@ The continuous operation control unit is a software-driven system engineered to 
 Circuit Diagram
 ---------------
 
-.. figure:: ../../../_static/shibu_figure/cstr_ckt_dgm.jpeg
+.. figure:: ../../../_static/figures/cstr_ckt_dgm.jpeg
    :alt: circuit diagram of CSTR
    :width: 800px
    :align: center

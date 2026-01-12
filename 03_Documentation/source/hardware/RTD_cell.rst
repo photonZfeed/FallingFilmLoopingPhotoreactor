@@ -3,7 +3,7 @@ Residence Time Distribution Measurement Cell
 
 Required 3D-Printed Components (Click to Download)
 ---------------------------------------------------
--   2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells)
+-   `2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells, available with 1, 2 and 3 mm inner diameter) <../../../../00_CAD/base_plate.stl>`_
 -   `base plate bricklet casing <../../../../00_CAD/base_plate.stl>`_
 
 Required Hardware Components

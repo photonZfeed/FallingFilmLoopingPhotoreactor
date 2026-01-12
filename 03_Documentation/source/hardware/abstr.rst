@@ -6,7 +6,7 @@ OVERVIEW
 
 The automated batch stirred tank reactor (ABSTR) is a software-controlled system that performs cyclic pump operations for continuous photoreactor processing. It sequentially delivers reaction mixture, collects product, washes with solvent, and repeats automatically. Programmable control enables precise timing, adaptable parameters, and reliable, continuous reactor operation.       
 
-.. figure:: ../../../_static/shibu_figure/ABSTR.png
+.. figure:: ../_static/figures/ABSTR.png
    :alt: complete image
    :width: 300px
    :align: center
@@ -15,23 +15,23 @@ The automated batch stirred tank reactor (ABSTR) is a software-controlled system
 
 MODULES USED
 ------------
-:doc:`Time controller module <../modules/time_controller>`
+:doc:`Time controller module <materials/01_Accessories/time_controller>`
 
-.. figure:: ../../../_static/shibu_figure/time_controller.jpeg
+.. figure:: ../_static/figures/time_controller.jpeg
    :alt: time controller module
    :width: 200px
    :align: center
 
-:doc:`Transit Circuit <../modules/transit_ckt>`
+:doc:`Transit Circuit <materials/01_Accessories/transit_ckt>`
 
-.. figure:: ../../../_static/shibu_figure/transit_ckt.jpeg
+.. figure:: ../_static/figures/transit_ckt.jpeg
    :alt: transit circuit module
    :width: 300px
    :align: center
 
-:doc:`Power Supply <../components/12V_10A_powersupply>`
+:doc:`Power Supply <materials/00_Electronics/02_Power_Supplies/12V_10A>`
 
-.. figure:: ../../../_static/shibu_figure/powersupply2.png
+.. figure:: ../_static/figures/powersupply2.png
    :width: 200px
    :align: center
 
@@ -55,7 +55,7 @@ Connection Instructions
 
 Block Diagram
 -------------
-.. figure:: ../../../_static/shibu_figure/abstr_block_dgm.png
+.. figure:: ../_static/figures/abstr_block_dgm.png
    :alt: block diagram
    :width: 400px
    :align: center

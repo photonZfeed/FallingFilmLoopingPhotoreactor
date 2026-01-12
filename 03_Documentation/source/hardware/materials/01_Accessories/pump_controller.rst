@@ -1,7 +1,7 @@
 CSTR OPERATIONAL MODULES
 ========================
 
-.. figure:: ../../../_static/shibu_figure/pump_controller.jpeg
+.. figure:: ../../../_static/figures/pump_controller.jpeg
    :alt: block diagram of CSTR
    :width: 800px
    :align: center
@@ -18,7 +18,7 @@ The continuous operation control unit is a software-driven system engineered to 
 Circuit Diagram
 ===============
 
-.. figure:: ../../../_static/shibu_figure/pump_controller.jpeg
+.. figure:: ../../../_static/figures/pump_controller.jpeg
    :alt: circuit diagram of CSTR
    :width: 800px
    :align: center

@@ -7,7 +7,7 @@ The transit circuit functions as a switching interface that allows the system to
 
 
 
-.. figure:: ../../../_static/shibu_figure/transit_ckt.jpeg
+.. figure:: ../../../_static/figures/transit_ckt.jpeg
    :alt: circuit diagram of CSTR
    :width: 500px
    :align: center
@@ -17,7 +17,7 @@ The transit circuit functions as a switching interface that allows the system to
 Components Used:
 ----------------
 
-:doc:`Relay <../components/relay>`
+:doc:`Relay <../../materials/00_Electronics/05_Small_Parts_CSTR/relay>`
 
 Switch
 

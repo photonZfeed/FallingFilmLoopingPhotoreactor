@@ -5,7 +5,7 @@ OVERVIEW
 --------
 The continuous batch stirred tank reactor (CSTR) is a software-assisted system designed to operate continuously while maintaining controlled flow rates and stable reactor volume. It uses dedicated inlet, outlet, and looping pumps to regulate mass, recirculate reactor effluent, and sustain a falling-film stirring environment. Through predefined flow parameters and dynamic feedback from an integrated weighing scale, the control software modulates pump operation to keep the reactor mass within target limits. Adjustable experimental settings allow the system to be optimized for different reaction conditions, ensuring stable, scalable, and efficient continuous operation.
 
-.. figure:: ../../../_static/shibu_figure/cstr_cmplt.jpeg
+.. figure:: ../_static/figures/cstr_cmplt.jpeg
    :alt: complete image
    :width: 300px
    :align: center
@@ -17,56 +17,55 @@ MODULES USED
 ------------
 
 
-:doc:`Measurement Module<../modules/weigh_scale>`
+:doc:`Measurement Module<materials/01_Accessories/weigh_scale>`
 
-.. figure:: ../../../_static/shibu_figure/weigh_scale.jpeg
+.. figure:: ../_static/figures/weigh_scale.jpeg
    :alt: Measurement Module
    :width: 300px
    :align: center
 
 
+:doc:`Power Supply <materials/00_Electronics/02_Power_Supplies/12V_10A>`
 
-:doc:`Power Supply <../components/12V_10A_powersupply>`
-
-.. figure:: ../../../_static/shibu_figure/powersupply.png
+.. figure:: ../_static/figures/powersupply.png
    :alt: power supply module
    :width: 300px
    :align: center
 
 
-:doc:`PUMP SPEED CONTROLLER <../modules/pump_controller>`
+:doc:`PUMP SPEED CONTROLLER <materials/01_Accessories/pump_controller>`
 
-.. figure:: ../../../_static/shibu_figure/pump_controller.jpeg
+.. figure:: ../_static/figures/pump_controller.jpeg
    :alt: pump speed controller
    :width: 300px
    :align: center
 
 
-:doc:`Transit Circuit <../modules/transit_ckt>`
+:doc:`Transit Circuit <materials/01_Accessories/transit_ckt>`
 
-.. figure:: ../../../_static/shibu_figure/transit_ckt.jpeg
+.. figure:: ../_static/figures/transit_ckt.jpeg
    :alt: transit circuit module
    :width: 300px
    :align: center
 
 
-:doc:`CSTR OPERATIONAL CKT <../modules/cstr_operational_ckt>`
+:doc:`CSTR OPERATIONAL CKT <materials/01_Accessories/cstr_operational_ckt>`
 
-.. figure:: ../../../_static/shibu_figure/cstr_operation_control.jpeg
+.. figure:: ../_static/figures/cstr_operation_control.jpeg
    :alt: cstr operational circuit
    :width: 300px
    :align: center
 
-:doc:`Low Flow Peristaltic Pump <../components/perisstalticpump_lowflow>`
+:doc:`Low Flow Peristaltic Pump <materials/01_Accessories/perisstalticpump_lowflow>`
 
-.. figure:: ../../../_static/shibu_figure/peristaltic_pump.png
+.. figure:: ../_static/figures/peristaltic_pump.png
    :alt: low flow peristaltic pump
    :width: 300px
    :align: center
 
-:doc:`High Flow Peristaltic Pump <../components/peristalticpump_highflow>`
+:doc:`High Flow Peristaltic Pump <materials/01_Accessories/peristalticpump_highflow>`
 
-.. figure:: ../../../_static/shibu_figure/peristaltic_pump.png
+.. figure:: ../_static/figures/peristaltic_pump.png
    :alt: high flow peristaltic pump
    :width: 300px
    :align: center
@@ -86,9 +85,9 @@ Assembly Instruction
 
 5.Connect the ground of all the modules to form a common ground.
 
-6. Refer to the block diagram provided below for a clearer understanding of the overall system architecture and signal flow.
+1. Refer to the block diagram provided below for a clearer understanding of the overall system architecture and signal flow.
 
-7. Upload the arduino code given below after adjusting the parameters required for the weighing scale and pumps.
+2. Upload the arduino code given below after adjusting the parameters required for the weighing scale and pumps.
 
 Block Diagram
 -------------
@@ -96,7 +95,7 @@ Block Diagram
 
 
 
-.. figure:: ../../../_static/shibu_figure/cstr_block_dgm.png
+.. figure:: ../_static/figures/cstr_block_dgm.png
    :alt: cstr block diagram
    :width: 800px
    :align: center
