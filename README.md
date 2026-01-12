@@ -8,9 +8,7 @@ A modular and characterized open source Falling Film Looping Photoreactor (FFLPR
 
 Experimental raw data on the RTD and bromination experiments are provided in the [Experiments section](./01_Experiments/).
 
-The Python and C++ modules for the operation of the RTD cells and Photoreactor controller are documented in the  [Software section](./02_Software/). See also the fairly detailed docstrings in the code. 
-
-A detailed documentation of the RTD cells and Photoreactor controller can be found in the [Documentation section](./03_Documentation/)
+A detailed documentation of the RTD cells and photoreactor including its control software as well as the RTD model are available under https://photonzfeed.github.io/FallingFilmLoopingPhotoreactor/.
 
 ## Folder Structure
 
