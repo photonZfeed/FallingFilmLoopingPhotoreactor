@@ -41,7 +41,7 @@ autodoc_default_options = {
     'show-inheritance': False,
 }
 
-autodoc_mock_imports = ["numpy", "scipy", "matplotlib", "pandas", "tinkerforge", "PyQt5", "sklearn", "ICIW_Plots"]
+autodoc_mock_imports = ["numpy", "scipy", "matplotlib", "pandas", "tinkerforge", "PyQt5", "sklearn", "ICIW_Plots", "rtdpy"]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

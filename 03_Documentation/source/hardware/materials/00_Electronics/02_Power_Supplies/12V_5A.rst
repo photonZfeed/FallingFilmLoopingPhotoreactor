@@ -1,4 +1,4 @@
-.. _12V_5A_power_supply:
+.. _12V_5A_power_supply_2:
 
 Power Supply
 ====================
