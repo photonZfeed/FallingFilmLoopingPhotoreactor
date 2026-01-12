@@ -20,7 +20,8 @@ Required Hardware Components
 -	External power supply
 -	USB-A to USB-C cable
 -	2x LEDs
--   `2 x photoresistors <../../../00_Materials/00_Electronics/05_Small_Parts/photoresistor.txt>`_
+-   `2 x photoresistors <../../00_Electronics/05_Small_Parts/photoresistor.txt>`_
+   `2 x photoresistors <materials/00_Electronics/06_Other_Small_Parts/photoresistor.rst>`_
 -	2x Resistors (10 kΩ)
 -	2x Connections between in/out and master brick
 -	2x small screws for the top of the analytic cells (M3)
