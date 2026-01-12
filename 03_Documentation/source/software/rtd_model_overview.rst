@@ -4,7 +4,7 @@ Residence Time Distribution Model Software Overview
 Summary
 -------
 
-The Residence Time Distribution (RTD) model software is designed to analyze experimental RTD data obtained from the Falling Film Looping Photoreactor (FFLPR). It processes raw data files, fits an axial dispersion model to the experimental data, and calculates key parameters such as the mean residence time and Bodenstein number. It is available here: `RTD Model Software <02_Software/00_RTD_Model>`_.
+The Residence Time Distribution (RTD) model software is designed to analyze experimental RTD data obtained from the Falling Film Looping Photoreactor (FFLPR). It processes raw data files, fits an axial dispersion model to the experimental data, and calculates key parameters such as the mean residence time and Bodenstein number. It is available here: `RTD Model Software <https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/tree/main/02_Software/00_RTD_Model>`_.
 
 Contents
 --------
