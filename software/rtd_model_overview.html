@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residence Time Distribution Model Software Overview &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Residence Time Distribution Model Software" href="rtd_model_software.html" />
+    <link rel="prev" title="Residence Time Distribution Cell Control Software" href="rtd_cell_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">Hardware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hx711_load_cell.html">HX711 Load Cell Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_cell_control.html">Residence Time Distribution Cell Control Software</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Residence Time Distribution Model Software Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models-and-equations">Models and Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mean-residence-time-and-bodenstein-number">Mean Residence Time and Bodenstein number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-experimental-data-and-simulation">Comparison of Experimental Data and Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulated-rtd-functions-at-increasing-flow-rates">Simulated RTD Functions at Increasing Flow Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_model_software.html">Residence Time Distribution Model Software</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software</a></li>
+      <li class="breadcrumb-item active">Residence Time Distribution Model Software Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software/rtd_model_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="residence-time-distribution-model-software-overview">
+<h1>Residence Time Distribution Model Software Overview<a class="headerlink" href="#residence-time-distribution-model-software-overview" title="Link to this heading"></a></h1>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>The Residence Time Distribution (RTD) model software is designed to analyze experimental RTD data obtained from the Falling Film Looping Photoreactor (FFLPR). It processes raw data files, fits an axial dispersion model to the experimental data, and calculates key parameters such as the mean residence time and Bodenstein number. It is available here: <a class="reference external" href="https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/tree/main/02_Software/00_RTD_Model">RTD Model Software</a>.</p>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">00_Processed_Data/</span></code>: Processed and evaluated <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">01_Figures/</span></code>: Plots of the RTD analysis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code>: Jupyter Notebook with RTD analysis code.</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Install the required Python packages using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.11</p></li>
+<li><p>All required Python packages are listed in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
+</ul>
+</section>
+<section id="models-and-equations">
+<h2>Models and Equations<a class="headerlink" href="#models-and-equations" title="Link to this heading"></a></h2>
+<p>To determine the Bodenstein number from the RTD experiments, an axial dispersion model with <strong>closed–closed boundary conditions</strong> <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is fitted to the experimental data. The input signal is modeled as an ideal Dirac pulse, since injection time ≪ residence time.</p>
+<p>The implementation is based on the <code class="docutils literal notranslate"><span class="pre">rtdpy</span></code> package <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Detailed equations and boundary conditions can be found in the rtdpy documentation: <a class="reference external" href="https://merck.github.io/rtdpy/AxialDispersion_cc.html">https://merck.github.io/rtdpy/AxialDispersion_cc.html</a></p>
+<p>The mean residence time <span class="math notranslate nohighlight">\(\bar{\tau}\)</span> is calculated as the first moment of the experimental residence time density function <span class="math notranslate nohighlight">\(E_{\mathrm{exp}}(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\bar{\tau} = \int_0^\infty t \cdot E_{\mathrm{exp}}(t) \, dt\]</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
+<p>The figures and table below summarize the results of the RTD analysis as a function of external flow rate.</p>
+</section>
+<section id="mean-residence-time-and-bodenstein-number">
+<h2>Mean Residence Time and Bodenstein number<a class="headerlink" href="#mean-residence-time-and-bodenstein-number" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Flow Rate (mL min⁻¹)</p></th>
+<th class="head"><p>Mean Residence Time (s)</p></th>
+<th class="head"><p>Hydrodynamic Mean Residence Time (s)</p></th>
+<th class="head"><p>Bodenstein Number (1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3.3</p></td>
+<td><p>272.02</p></td>
+<td><p>363.64</p></td>
+<td><p>0.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.0</p></td>
+<td><p>174.05</p></td>
+<td><p>240.00</p></td>
+<td><p>1.13</p></td>
+</tr>
+<tr class="row-even"><td><p>10.0</p></td>
+<td><p>119.29</p></td>
+<td><p>120.00</p></td>
+<td><p>0.53</p></td>
+</tr>
+<tr class="row-odd"><td><p>20.0</p></td>
+<td><p>80.91</p></td>
+<td><p>60.00</p></td>
+<td><p>0.58</p></td>
+</tr>
+<tr class="row-even"><td><p>40.0</p></td>
+<td><p>73.21</p></td>
+<td><p>30.00</p></td>
+<td><p>0.44</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/tau_Bo_plot.png"><img alt="Figure 1" src="../_images/tau_Bo_plot.png" style="width: 400px;" />
+</a>
+</figure>
+</section>
+<section id="comparison-of-experimental-data-and-simulation">
+<h2>Comparison of Experimental Data and Simulation<a class="headerlink" href="#comparison-of-experimental-data-and-simulation" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/comparison_plot.png"><img alt="Comparison of experimental data and simulation" src="../_images/comparison_plot.png" style="width: 800px;" />
+</a>
+</section>
+<section id="simulated-rtd-functions-at-increasing-flow-rates">
+<h2>Simulated RTD Functions at Increasing Flow Rates<a class="headerlink" href="#simulated-rtd-functions-at-increasing-flow-rates" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/all_simulated_RTDs_plot.png"><img alt="Simulated RTD functions at increasing flow rates" src="../_images/all_simulated_RTDs_plot.png" style="width: 800px;" />
+</a>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="15">
+<li><p>Levenspiel, Chemical reaction engineering. Hauptbd., 3. ed, Wiley, New York Weinheim, 1999.</p></li>
+</ol>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Flamm, M. rtdpy: A python package for residence time distributions. Journal of Open Source Software, 4(40), 1621 (2019).</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rtd_cell_control.html" class="btn btn-neutral float-left" title="Residence Time Distribution Cell Control Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rtd_model_software.html" class="btn btn-neutral float-right" title="Residence Time Distribution Model Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Continuous Batch Stirred Tank Reactor (CSTR) &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Residence Time Distribution Measurement Cell" href="RTD_cell.html" />
+    <link rel="prev" title="Automated Batch Stirred Tank Reactor (ABSTR)" href="abstr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="materials/index.html">Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstr.html">Automated Batch Stirred Tank Reactor (ABSTR)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Continuous Batch Stirred Tank Reactor (CSTR)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">OVERVIEW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules-used">MODULES USED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assembly-instruction">Assembly Instruction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arduino-code-for-cstr">Arduino Code for CSTR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RTD_cell.html">Residence Time Distribution Measurement Cell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Hardware</a></li>
+      <li class="breadcrumb-item active">Continuous Batch Stirred Tank Reactor (CSTR)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/cstr_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="continuous-batch-stirred-tank-reactor-cstr">
+<h1>Continuous Batch Stirred Tank Reactor (CSTR)<a class="headerlink" href="#continuous-batch-stirred-tank-reactor-cstr" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>OVERVIEW<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The continuous batch stirred tank reactor (CSTR) is a software-assisted system designed to operate continuously while maintaining controlled flow rates and stable reactor volume. It uses dedicated inlet, outlet, and looping pumps to regulate mass, recirculate reactor effluent, and sustain a falling-film stirring environment. Through predefined flow parameters and dynamic feedback from an integrated weighing scale, the control software modulates pump operation to keep the reactor mass within target limits. Adjustable experimental settings allow the system to be optimized for different reaction conditions, ensuring stable, scalable, and efficient continuous operation.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/cstr_cmplt.jpeg"><img alt="complete image" src="../_images/cstr_cmplt.jpeg" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 1: Complete diagram of the machine</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modules-used">
+<h2>MODULES USED<a class="headerlink" href="#modules-used" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="materials/01_Accessories/weigh_scale.html"><span class="doc">Measurement Module</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/weigh_scale.jpeg"><img alt="Measurement Module" src="../_images/weigh_scale.jpeg" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/00_Electronics/02_Power_Supplies/12V_10A.html"><span class="doc">Power Supply</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/powersupply.png"><img alt="power supply module" src="../_images/powersupply.png" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/pump_controller.html"><span class="doc">PUMP SPEED CONTROLLER</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/pump_controller.jpeg"><img alt="pump speed controller" src="../_images/pump_controller.jpeg" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/transit_ckt.html"><span class="doc">Transit Circuit</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/transit_ckt.jpeg"><img alt="transit circuit module" src="../_images/transit_ckt.jpeg" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/cstr_operational_ckt.html"><span class="doc">CSTR OPERATIONAL CKT</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/cstr_operation_control.jpeg"><img alt="cstr operational circuit" src="../_images/cstr_operation_control.jpeg" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/perisstalticpump_lowflow.html"><span class="doc">Low Flow Peristaltic Pump</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/peristaltic_pump.png"><img alt="low flow peristaltic pump" src="../_images/peristaltic_pump.png" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/peristalticpump_highflow.html"><span class="doc">High Flow Peristaltic Pump</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/peristaltic_pump.png"><img alt="high flow peristaltic pump" src="../_images/peristaltic_pump.png" style="width: 300px;" />
+</a>
+</figure>
+</section>
+<section id="assembly-instruction">
+<h2>Assembly Instruction<a class="headerlink" href="#assembly-instruction" title="Link to this heading"></a></h2>
+<p>1.Connect the Power of the measurement scale with the adapter</p>
+<p>2.connect the output of the measurement scale with the input of the cstr operational circuit according to block diagram below</p>
+<p>3.connect the power of the cstr operational module.</p>
+<p>4.connect the inlet and outlet pump with the cstr operational circuit according to the block diagram below.</p>
+<p>5.Connect the ground of all the modules to form a common ground.</p>
+<ol class="arabic simple">
+<li><p>Refer to the block diagram provided below for a clearer understanding of the overall system architecture and signal flow.</p></li>
+<li><p>Upload the arduino code given below after adjusting the parameters required for the weighing scale and pumps.</p></li>
+</ol>
+</section>
+<section id="block-diagram">
+<h2>Block Diagram<a class="headerlink" href="#block-diagram" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/cstr_block_dgm.png"><img alt="cstr block diagram" src="../_images/cstr_block_dgm.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure: Block diagram of CSTR circuit</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="arduino-code-for-cstr">
+<h2>Arduino Code for CSTR<a class="headerlink" href="#arduino-code-for-cstr" title="Link to this heading"></a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;HX711_ADC.h&gt;</span>
+<span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="linenos"> 3</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;LiquidCrystal_I2C.h&gt;</span><span class="c1"> // LiquidCrystal_I2C library</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">HX711_ADC</span><span class="w"> </span><span class="nf">LoadCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">// dt pin, sck pin</span>
+<span class="linenos"> 6</span><span class="n">LiquidCrystal_I2C</span><span class="w"> </span><span class="nf">lcd</span><span class="p">(</span><span class="mh">0x27</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// LCD HEX address 0x27</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kt">int</span><span class="w"> </span><span class="n">taree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">10</span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">11</span><span class="kt">int</span><span class="w"> </span><span class="n">inlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="linenos">12</span><span class="kt">int</span><span class="w"> </span><span class="n">outlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.5</span><span class="w"> </span><span class="c1">// set the maximum weight of the reactant</span>
+<span class="linenos">15</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">19.5</span><span class="w"> </span><span class="c1">// set the minimum weight of the reactant</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="kt">void</span><span class="w"> </span><span class="n">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="n">inlet</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="n">outlet</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="n">taree</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_PULLUP</span><span class="p">);</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">   </span><span class="n">LoadCell</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="c1">// start connection to HX711</span>
+<span class="linenos">23</span><span class="w">   </span><span class="n">LoadCell</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// load cells get 1000ms of time to stabilize</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">   </span><span class="c1">///////////////////////////////////////////</span>
+<span class="linenos">26</span><span class="w">   </span><span class="n">LoadCell</span><span class="p">.</span><span class="n">setCalFactor</span><span class="p">(</span><span class="mi">375</span><span class="p">);</span><span class="w"> </span><span class="c1">// Calibrate your LOAD CELL with 100g weight,</span>
+<span class="linenos">27</span><span class="w">                              </span><span class="c1">// and change the value according to readings</span>
+<span class="linenos">28</span><span class="w">   </span><span class="c1">///////////////////////////////////////////</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">   </span><span class="c1">// initialize the LCD</span>
+<span class="linenos">31</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w">      </span><span class="c1">// begins connection to the LCD module</span>
+<span class="linenos">32</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">backlight</span><span class="p">();</span><span class="w">  </span><span class="c1">// turns on the backlight</span>
+<span class="linenos">33</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set cursor to first row</span>
+<span class="linenos">34</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Digital Scale &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// print out to LCD</span>
+<span class="linenos">35</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// set cursor to first row</span>
+<span class="linenos">36</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; SHIBU NASKAR &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// print out to LCD</span>
+<span class="linenos">37</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="linenos">38</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="linenos">39</span><span class="p">}</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="kt">void</span><span class="w"> </span><span class="n">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">42</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set cursor to first row</span>
+<span class="linenos">43</span><span class="w">   </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Digital Scale &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// print out to LCD</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="w">   </span><span class="n">LoadCell</span><span class="p">.</span><span class="n">update</span><span class="p">();</span><span class="w"> </span><span class="c1">// retrieves data from the load cell</span>
+<span class="linenos">46</span><span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadCell</span><span class="p">.</span><span class="n">getData</span><span class="p">();</span><span class="w"> </span><span class="c1">// get output value</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">49</span><span class="w">      </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="linenos">50</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">51</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="linenos">52</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">53</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="linenos">54</span><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">55</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">56</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="linenos">57</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">58</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// set cursor to second row</span>
+<span class="linenos">61</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="c1">// print out the retrieved value to the second row</span>
+<span class="linenos">62</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;g &quot;</span><span class="p">);</span>
+<span class="linenos">63</span><span class="w">      </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">28.3495</span><span class="p">;</span>
+<span class="linenos">64</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">65</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="linenos">66</span><span class="w">      </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;oz &quot;</span><span class="p">);</span>
+<span class="linenos">67</span>
+<span class="linenos">68</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">69</span><span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">70</span><span class="w">            </span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set cursor to second row</span>
+<span class="linenos">71</span><span class="w">            </span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Over loaded &quot;</span><span class="p">);</span>
+<span class="linenos">72</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="linenos">73</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">74</span>
+<span class="linenos">75</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">76</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">outlet</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">77</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="linenos">78</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">inlet</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">79</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+<span class="linenos">80</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">81</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">inlet</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">82</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="linenos">83</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">outlet</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">84</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+<span class="linenos">85</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">86</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">outlet</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">87</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">inlet</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">88</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+<span class="linenos">89</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">90</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">outlet</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">91</span><span class="w">            </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">inlet</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">92</span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+<span class="linenos">93</span><span class="w">      </span><span class="p">}</span>
+<span class="linenos">94</span><span class="w">   </span><span class="p">}</span>
+<span class="linenos">95</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="abstr.html" class="btn btn-neutral float-left" title="Automated Batch Stirred Tank Reactor (ABSTR)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RTD_cell.html" class="btn btn-neutral float-right" title="Residence Time Distribution Measurement Cell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residence Time Distribution Model Software &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Residence Time Distribution Model Software Overview" href="rtd_model_overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">Hardware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hx711_load_cell.html">HX711 Load Cell Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_cell_control.html">Residence Time Distribution Cell Control Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_model_overview.html">Residence Time Distribution Model Software Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Residence Time Distribution Model Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.calc_tau"><code class="docutils literal notranslate"><span class="pre">calc_tau()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.calculate_RTD_functions"><code class="docutils literal notranslate"><span class="pre">calculate_RTD_functions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.create_all_simulated_RTDs_plot"><code class="docutils literal notranslate"><span class="pre">create_all_simulated_RTDs_plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.create_comparison_plots"><code class="docutils literal notranslate"><span class="pre">create_comparison_plots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.create_tau_Bo_plot"><code class="docutils literal notranslate"><span class="pre">create_tau_Bo_plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.fit_Bo"><code class="docutils literal notranslate"><span class="pre">fit_Bo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.objective"><code class="docutils literal notranslate"><span class="pre">objective()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.preprocessing"><code class="docutils literal notranslate"><span class="pre">preprocessing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Software.00_RTD_Model.main.process_file"><code class="docutils literal notranslate"><span class="pre">process_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software</a></li>
+      <li class="breadcrumb-item active">Residence Time Distribution Model Software</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software/rtd_model_software.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="residence-time-distribution-model-software">
+<h1>Residence Time Distribution Model Software<a class="headerlink" href="#residence-time-distribution-model-software" title="Link to this heading"></a></h1>
+<blockquote>
+<div><dl class="py function" id="module-02_Software.00_RTD_Model.main">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.calc_tau">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">calc_tau</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessed_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#calc_tau"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.calc_tau" title="Link to this definition"></a></dt>
+<dd><p>Calculates the residence time from the preprocessed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>preprocessed_data</strong> (<em>pd.DataFrame</em>) – Preprocessed data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>tau</strong> – Residence time.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.calculate_RTD_functions">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">calculate_RTD_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessed_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#calculate_RTD_functions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.calculate_RTD_functions" title="Link to this definition"></a></dt>
+<dd><p>Fits the model to the experimental data by minimizing the objective function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Bo</strong> (<em>float</em>) – Bodenstein number.</p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – Residence time.</p></li>
+<li><p><strong>processed_data</strong> (<em>pd.DataFrame</em>) – Preprocessed data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sum of squared errors between the simulated and experimental data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.create_all_simulated_RTDs_plot">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">create_all_simulated_RTDs_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_data_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'svg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#create_all_simulated_RTDs_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.create_all_simulated_RTDs_plot" title="Link to this definition"></a></dt>
+<dd><p>Creates a plot for the simulated exit age distribution of all flow rates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>processed_data_list</strong> (<em>list</em><em> of </em><em>pd.DataFrame</em>) – List of preprocessed data DataFrames for different flow rates.</p></li>
+<li><p><strong>t_end</strong> (<em>float</em>) – End time for the simulation, used to set the x-axis limit.</p></li>
+<li><p><strong>E_t_max</strong> (<em>float</em>) – Maximum value of E(t) for all flow rates, used to set the y-axis limit.</p></li>
+<li><p><strong>store_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the folder where the plot will be saved. The default is None, which means the plot will not be saved.</p></li>
+<li><p><strong>filetype</strong> (<em>str</em><em>, </em><em>optional</em>) – File type for saving the plot. The default is “svg”. Other options could be “png”, “pdf”, etc.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.create_comparison_plots">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">create_comparison_plots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_data_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">matplotlib.pyplot.rcParams.axes.prop_cycle.by_key.color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'svg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#create_comparison_plots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.create_comparison_plots" title="Link to this definition"></a></dt>
+<dd><p>Creates a comparison plot for the exit age distribution of different flow rates.
+The plot shows the experimental data and the simulated data for each flow rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>processed_data_list</strong> (<em>list</em><em> of </em><em>pd.DataFrame</em>) – List of preprocessed data DataFrames for different flow rates.</p></li>
+<li><p><strong>t_end</strong> (<em>float</em>) – End time for the simulation, used to set the x-axis limit.</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – List of colors for the experimental and simulated data lines. The default is the current style cycle colors.</p></li>
+<li><p><strong>store_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the folder where the plot will be saved. The default is None, which means the plot will not be saved.</p></li>
+<li><p><strong>filetype</strong> (<em>str</em><em>, </em><em>optional</em>) – File type for saving the plot. The default is “svg”. Other options could be “png”, “pdf”, etc.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.create_tau_Bo_plot">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">create_tau_Bo_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_data_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'svg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#create_tau_Bo_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.create_tau_Bo_plot" title="Link to this definition"></a></dt>
+<dd><p>Creates a plot of the hydrodynamic and measured mean residence time against flow rate on the left axis
+and the Bodenstein number on the right axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>processed_data_list</strong> (<em>list</em><em> of </em><em>pd.DataFrame</em>) – List of preprocessed data DataFrames for different flow rates.</p></li>
+<li><p><strong>store_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to store the plot. If None, the plot is not saved.</p></li>
+<li><p><strong>filetype</strong> (<em>str</em><em>, </em><em>optional</em>) – File type to save the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.fit_Bo">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">fit_Bo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessed_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bo_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#fit_Bo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.fit_Bo" title="Link to this definition"></a></dt>
+<dd><p>Fits the Bodenstein number to the preprocessed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preprocessed_data</strong> (<em>pd.DataFrame</em>) – Preprocessed data.</p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – Residence time.</p></li>
+<li><p><strong>Bo_init</strong> (<em>float</em>) – Initial guess for the Bodenstein number. Default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Bo</strong> – Optimized Bodenstein number.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.objective">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">objective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Bo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessed_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#objective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.objective" title="Link to this definition"></a></dt>
+<dd><p>Objective function to minimize for the optimization problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Bo</strong> (<em>float</em>) – Bodenstein number.</p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – Residence time.</p></li>
+<li><p><strong>processed_data</strong> (<em>pd.DataFrame</em>) – Preprocessed data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>total_squared_error</strong> – Sum of squared errors between simulated and experimental data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.preprocessing">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'experimental_data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.preprocessing" title="Link to this definition"></a></dt>
+<dd><p>Preprocesses the experimental data by performing the following steps:
+1. Baseline correction using linear regression
+2. Normalization by integrating the area under the curve
+3. Smoothing using running average
+4. Set time of injection to t = 0 and set dt to a fixed value by interpolating
+5. Calculate experimental E- and F-function from the normalized voltage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em>) – Name of the file containing the experimental data.</p></li>
+<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the file containing the experimental data. The default is “experimental_data/”.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The window size for the running average. The default is 10.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>preprocessed_data</strong> – A DataFrame containing the preprocessed data.
+Time (s): Time in seconds since the peak of the outlet signal.
+E_exp_in (s-1): Experimental E-function at the inlet.
+E_exp_out (s-1): Experimental E-function at the outlet.
+F_exp_in (1): Experimental F-function at the inlet.
+F_exp_out (1): Experimental F-function at the outlet.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Software.00_RTD_Model.main.process_file">
+<span class="sig-prename descclassname"><span class="pre">02_Software.00_RTD_Model.main.</span></span><span class="sig-name descname"><span class="pre">process_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'experimental_data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bo_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/02_Software/00_RTD_Model/main.html#process_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Software.00_RTD_Model.main.process_file" title="Link to this definition"></a></dt>
+<dd><p>Processes the experimental data by preprocessing and calculating the exit age distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em>) – Name of the file containing the experimental data.</p></li>
+<li><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the file containing the experimental data. The default is “experimental_data/”.</p></li>
+<li><p><strong>window_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The window size for the running average. The default is 10.</p></li>
+<li><p><strong>Bo_init</strong> (<em>float</em><em>, </em><em>optional</em>) – Initial guess for the Bodenstein number. The default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>preprocessed_data</strong> (<em>pd.DataFrame</em>) – A DataFrame containing the preprocessed data.</p></li>
+<li><p><strong>E_sim</strong> (<em>np.ndarray</em>) – Simulated exit age distribution.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rtd_model_overview.html" class="btn btn-neutral float-left" title="Residence Time Distribution Model Software Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

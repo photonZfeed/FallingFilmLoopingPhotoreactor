@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02_Software.02_RTD_Cell_Control &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/index.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/index.html">Software</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">02_Software.02_RTD_Cell_Control</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for 02_Software.02_RTD_Cell_Control</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt5.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QFileDialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt5.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTimer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends.backend_qt5agg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FigureCanvasQTAgg</span> <span class="k">as</span> <span class="n">FigureCanvas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tinkerforge.ip_connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPConnection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tinkerforge.bricklet_industrial_dual_analog_in_v2</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrickletIndustrialDualAnalogInV2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tinkerforge.bricklet_industrial_analog_out_v2</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrickletIndustrialAnalogOutV2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="c1"># configuration parameters for Tinkerforge setup</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">4223</span>
+<span class="n">UID_DUAL_ANALOG_IN</span> <span class="o">=</span> <span class="s2">&quot;Mmj&quot;</span>  <span class="c1"># Change to your UID for the Industrial Dual Analog In 2.1</span>
+<span class="n">UID_ANALOG_OUT</span> <span class="o">=</span> <span class="s2">&quot;Ygt&quot;</span>      <span class="c1"># Change to your UID for the Analog Out 2.0</span>
+
+<div class="viewcode-block" id="DynamicPlot">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DynamicPlot</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main window class for dynamic plotting of the RTD data.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;Dynamic Plot with PyQt5 and Tinkerforge&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">central_widget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">central_widget</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">central_widget</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">FigureCanvas</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Start Measurement&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_acquisition</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_button</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Start LED&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_LED</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_button</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Stop LED&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop_LED</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop_button</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Save data&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_values</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_button</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button_layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">voltage_at_c_max</span> <span class="o">=</span> <span class="mi">2699</span><span class="p">,</span><span class="mi">3300</span> <span class="c1"># values in mV for 1mm diameter (for a conc of 0.01 g/L)       # changed on 06/06/2024</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dConc_dVoltage_constant</span> <span class="o">=</span> <span class="mi">2240</span><span class="o">/</span><span class="mi">2889</span><span class="p">,</span><span class="mi">2900</span><span class="o">/</span><span class="mi">3584</span> <span class="c1">#voltage change for a concentration of 2 g/L determined with Photoresistor for 1mm</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamps</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_0</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_1</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_conc_1</span> <span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_conc_2</span> <span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_0</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_1</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">QTimer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># 200 ms = 0.2 s</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_plot</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Tinkerforge Initialisierung</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ipcon</span> <span class="o">=</span> <span class="n">IPConnection</span><span class="p">()</span>
+
+        <span class="c1"># Industrial Dual Analog In V2 Initialisierung</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ida</span> <span class="o">=</span> <span class="n">BrickletIndustrialDualAnalogInV2</span><span class="p">(</span><span class="n">UID_DUAL_ANALOG_IN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipcon</span><span class="p">)</span>
+
+        <span class="c1"># Analog Out V2 Initialisierung</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analog_out_v2</span> <span class="o">=</span> <span class="n">BrickletIndustrialAnalogOutV2</span><span class="p">(</span><span class="n">UID_ANALOG_OUT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipcon</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ipcon</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span>
+    
+
+
+<div class="viewcode-block" id="DynamicPlot.start_LED">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.start_LED">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_LED</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts the LED.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">analog_out_v2</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># turn on LED</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LED on. Please wait 60 seconds before you start the measurement.&#39;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="DynamicPlot.start_acquisition">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.start_acquisition">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_acquisition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts the data acquisition.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="c1"># self.set_reference()</span>
+        <span class="n">voltage_0</span><span class="p">,</span> <span class="n">voltage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span> <span class="o">=</span> <span class="n">voltage_0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span> <span class="o">=</span> <span class="n">voltage_1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Measurement started.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reference signal at the start:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;mV and &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span><span class="p">)</span><span class="o">+</span> <span class="s1">&#39;mV&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DynamicPlot.stop_LED">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.stop_LED">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_LED</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Turns off the LED.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analog_out_v2</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># turn off LED</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LED off.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DynamicPlot.get_voltage">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.get_voltage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the voltage readings from both channels.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Voltage for channel 0 and channel 1 in mV.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">voltage_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Channel 0 in mV</span>
+        <span class="n">voltage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Channel 1 in mV</span>
+        <span class="k">return</span> <span class="n">voltage_0</span><span class="p">,</span> <span class="n">voltage_1</span></div>
+
+    
+<div class="viewcode-block" id="DynamicPlot.get_concentration">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.get_concentration">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_concentration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the concentration based on the voltage.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Concentration for channel 0 and channel 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">voltage0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+        <span class="n">voltage1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      
+        <span class="c1"># conc1 = (- self.dConc_dVoltage_constant[0] * voltage0 + self.dConc_dVoltage_constant[0] *self.initial_voltage_0)/1000 #Concentration of Product VIS 1 in mol / L</span>
+        <span class="c1"># conc2 = (- self.dConc_dVoltage_constant[1] * voltage1 + self.dConc_dVoltage_constant[1] *self.initial_voltage_1)/1000 #Concentration of Product VIS 2 in mol / L</span>
+
+        <span class="c1"># conc1 = (2/319.85) * ((voltage0-self.initial_voltage_0)/(self.voltage_at_c_max[0]-self.initial_voltage_0)) </span>
+        <span class="c1"># conc2 = (2/319.85) * ((voltage1-self.initial_voltage_1)/(self.voltage_at_c_max[1]-self.initial_voltage_1)) </span>
+
+
+        <span class="n">conc1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="o">/</span><span class="mf">319.85</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">voltage0</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voltage_at_c_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span><span class="p">))</span> 
+        <span class="n">conc2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="o">/</span><span class="mf">319.85</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">voltage1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voltage_at_c_max</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span><span class="p">))</span> 
+        <span class="k">return</span> <span class="n">conc1</span><span class="p">,</span> <span class="n">conc2</span></div>
+
+
+
+<div class="viewcode-block" id="DynamicPlot.get_signal">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.get_signal">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the adjusted voltage signal.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Adjusted voltage for channel 0 and channel 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">voltage_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">voltage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">adj_vol_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_0</span> <span class="o">-</span> <span class="n">voltage_0</span>
+        <span class="n">adj_vol_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_voltage_1</span> <span class="o">-</span> <span class="n">voltage_1</span>
+        <span class="k">return</span> <span class="n">adj_vol_0</span><span class="p">,</span> <span class="n">adj_vol_1</span></div>
+
+
+
+
+    
+<div class="viewcode-block" id="DynamicPlot.update_plot">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.update_plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the plot with new data.&quot;&quot;&quot;</span>
+        <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="n">voltage_0</span><span class="p">,</span> <span class="n">voltage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voltage</span><span class="p">()</span>
+        <span class="c1"># concentration1, concentration2 = self.get_concentration()</span>
+        <span class="n">signal_0</span><span class="p">,</span> <span class="n">signal_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_signal</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">voltage_0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">voltage_1</span><span class="p">)</span>
+        <span class="c1"># self.data_conc_1.append(concentration1)</span>
+        <span class="c1"># self.data_conc_2.append(concentration2)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Signal Cell 0&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Signal Cell 1&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="c1"># self.ax.set_ylim(-0.0005, 0.003)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time / s&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Adjusted Voltage / mV&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DynamicPlot.save_values">
+<a class="viewcode-back" href="../../software/rtd_cell_control.html#02_Software.02_RTD_Cell_Control.DynamicPlot.save_values">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the collected data to a CSV file.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Open a file dialog to select the save location</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
+        <span class="n">options</span> <span class="o">|=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">DontUseNativeDialog</span>
+        <span class="n">file_path</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getSaveFileName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Save As&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;CSV Files (*.csv);;All Files (*)&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">file_path</span><span class="p">:</span>
+            <span class="c1"># Organize the data into a dictionary</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Timestamp&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamps</span><span class="p">,</span>
+                <span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="p">,</span>
+                <span class="s1">&#39;Voltage Channel 0&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_0</span><span class="p">,</span>
+                <span class="s1">&#39;Voltage Channel 1&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_data_channel_1</span><span class="p">,</span>
+                <span class="s1">&#39;Adjusted Voltage Channel 0&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_0</span><span class="p">,</span>
+                <span class="s1">&#39;Adjusted Voltage Channel 1&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_signal_1</span>
+                <span class="c1"># &#39;Concentration Channel 0&#39;: self.data_conc_1,</span>
+                <span class="c1"># &#39;Concentration Channel 1&#39;: self.data_conc_2</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Convert the dictionary into a pandas DataFrame</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="c1"># Save the DataFrame as a CSV file</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data successfully saved in: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>           <span class="c1"># IMPORTANT: When saving the file, put .csv in the file name to gain the right data-type!</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">DynamicPlot</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
