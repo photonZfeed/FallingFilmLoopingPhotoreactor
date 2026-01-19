@@ -1,11 +1,11 @@
 ============================================================
-HX711 Load Cell Project — BSTR & CSTR
+HX711 Load Cell Project
 ============================================================
 
 Project Overview
 ================
 
-This project contains two Arduino sketches designed for **Batch Stirred Tank Reactor (BSTR)** and **Continuous Stirred Tank Reactor (CSTR)** systems. Both sketches utilize the HX711_ADC library to interface with HX711 load cell amplifiers for precise weight measurement and mass monitoring.
+This project contains two Arduino sketches designed for the **Continuous Stirred Tank Reactor (CSTR)**. Both sketches utilize the HX711_ADC library to interface with HX711 load cell amplifiers for precise weight measurement and mass monitoring.
 
 The project integrates an I2C Liquid Crystal Display (LCD) for real-time display of sensor readings and system status messages. All sketches are programmed using the Arduino IDE and require installation of the HX711_ADC and LiquidCrystal_I2C libraries.
 
@@ -14,8 +14,7 @@ System Components
 
 **Arduino Sketches:**
 
-* **BSTR Sketch:** Batch Stirred Tank Reactor control system
-* **CSTR Sketch:** Continuous Stirred Tank Reactor with automated inlet/outlet valve control
+* Continuous Stirred Tank Reactor with automated inlet/outlet valve control
 
 **Hardware Requirements:**
 
