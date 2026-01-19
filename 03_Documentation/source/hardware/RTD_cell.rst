@@ -106,7 +106,7 @@ Code
 ^^^^^^
 
 To operate the setup, the following code is needed: Dynamic_Plot_new.py 
-The code is available here: https://gitlab.uni-ulm.de/ag-ziegenbalg/py4modphotoreactor/-/tree/HIWI_Alexander_Saller?ref_type=heads.
+The code is available here: https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/blob/main/02_Software/02_RTD_Cell_Control.py.
 Make sure all needed packages for the code are installed and the UID for industrial analog in and out in the code is changed to the once used in the setup.
 The UIDs for industrial analog in and out can be checked with brickviewer, once the setup is connected to the PC.
 To open the measurement window, run the code.
