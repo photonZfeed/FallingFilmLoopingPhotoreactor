@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated Batch Stirred Tank Reactor (ABSTR) &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Continuous Batch Stirred Tank Reactor (CSTR)" href="cstr_overview.html" />
+    <link rel="prev" title="weight scale" href="materials/01_Accessories/weigh_scale.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="materials/index.html">Materials</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Automated Batch Stirred Tank Reactor (ABSTR)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">OVERVIEW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules-used">MODULES USED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-instructions">Connection Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arduino-code-for-abstr">Arduino code For ABSTR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cstr_overview.html">Continuous Batch Stirred Tank Reactor (CSTR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RTD_cell.html">Residence Time Distribution Measurement Cell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Hardware</a></li>
+      <li class="breadcrumb-item active">Automated Batch Stirred Tank Reactor (ABSTR)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/abstr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automated-batch-stirred-tank-reactor-abstr">
+<h1>Automated Batch Stirred Tank Reactor (ABSTR)<a class="headerlink" href="#automated-batch-stirred-tank-reactor-abstr" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>OVERVIEW<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The automated batch stirred tank reactor (ABSTR) is a software-controlled system that performs cyclic pump operations for continuous photoreactor processing. It sequentially delivers reaction mixture, collects product, washes with solvent, and repeats automatically. Programmable control enables precise timing, adaptable parameters, and reliable, continuous reactor operation.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/ABSTR.png"><img alt="complete image" src="../_images/ABSTR.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 1: Complete diagram of the machine</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modules-used">
+<h2>MODULES USED<a class="headerlink" href="#modules-used" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="materials/01_Accessories/time_controller.html"><span class="doc">Time controller module</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/time_controller.jpeg"><img alt="time controller module" src="../_images/time_controller.jpeg" style="width: 200px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/01_Accessories/transit_ckt.html"><span class="doc">Transit Circuit</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/transit_ckt.jpeg"><img alt="transit circuit module" src="../_images/transit_ckt.jpeg" style="width: 300px;" />
+</a>
+</figure>
+<p><a class="reference internal" href="materials/00_Electronics/02_Power_Supplies/12V_10A.html"><span class="doc">Power Supply</span></a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/powersupply2.png"><img alt="../_images/powersupply2.png" src="../_images/powersupply2.png" style="width: 200px;" />
+</a>
+</figure>
+</section>
+<section id="connection-instructions">
+<h2>Connection Instructions<a class="headerlink" href="#connection-instructions" title="Link to this heading"></a></h2>
+<p>1.Connect the output terminal of the controller to the input terminal of the pump controller to enable software-based actuation.</p>
+<p>2.Connect the output terminals of the pump controller individually to each pump for independent operation.</p>
+<p>3.Connect the ground of each pump and combine them to form a common ground, then interface this common ground with the power supply ground.</p>
+<p>4.Connect the power supply to the pump controller to provide stable operating power.</p>
+<p>5.Connect the power supply to the timing controller module to ensure proper timing and sequencing functionality.</p>
+<p>6.Refer to the block diagram provided below for a clearer understanding of the overall system architecture and signal flow.</p>
+<p>7.After that uplod the arduino code given below after adjusting the parameters required for the timers.</p>
+</section>
+<section id="block-diagram">
+<h2>Block Diagram<a class="headerlink" href="#block-diagram" title="Link to this heading"></a></h2>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/abstr_block_dgm.png"><img alt="block diagram" src="../_images/abstr_block_dgm.png" style="width: 400px;" />
+</a>
+</figure>
+</section>
+<section id="arduino-code-for-abstr">
+<h2>Arduino code For ABSTR<a class="headerlink" href="#arduino-code-for-abstr" title="Link to this heading"></a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kt">int</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="kt">int</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">10UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000UL</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">10UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000UL</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">   </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">10UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000UL</span><span class="p">);</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">18</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">28</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">31</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">32</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">35</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">36</span><span class="w">   </span><span class="n">delay</span><span class="p">(</span><span class="mi">60UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">12UL</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000UL</span><span class="p">);</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="linenos">39</span><span class="w">   </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="linenos">40</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="materials/01_Accessories/weigh_scale.html" class="btn btn-neutral float-left" title="weight scale" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cstr_overview.html" class="btn btn-neutral float-right" title="Continuous Batch Stirred Tank Reactor (CSTR)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

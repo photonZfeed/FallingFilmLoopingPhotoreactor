@@ -1,0 +1,13 @@
+TP4056 module
+=============
+
+:Supplier: robu.in
+:SKU: 835842
+:Input interface: Type C
+:Current Protection: Yes
+:Charging mode: Linear charging.
+:Current: 1A adjustable.
+:Charge precision: 1.5%.
+:Input voltage: 4.5V-5.5V.
+:Full charge voltage: 4.2V.
+:Link: https://robu.in/product/tp4056-1a-li-ion-lithium-battery-charging-module-with-current-protection-type-c/

@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HX711 Load Cell Project &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Residence Time Distribution Cell Control Software" href="rtd_cell_control.html" />
+    <link rel="prev" title="Software" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/index.html">Hardware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HX711 Load Cell Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#project-overview">Project Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-components">System Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies-and-installation">Dependencies and Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-structure">Project Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_cell_control.html">Residence Time Distribution Cell Control Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_model_overview.html">Residence Time Distribution Model Software Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtd_model_software.html">Residence Time Distribution Model Software</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software</a></li>
+      <li class="breadcrumb-item active">HX711 Load Cell Project</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software/hx711_load_cell.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hx711-load-cell-project">
+<h1>HX711 Load Cell Project<a class="headerlink" href="#hx711-load-cell-project" title="Link to this heading"></a></h1>
+<section id="project-overview">
+<h2>Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading"></a></h2>
+<p>This project contains two Arduino sketches designed for the <strong>Continuous Stirred Tank Reactor (CSTR)</strong>. Both sketches utilize the HX711_ADC library to interface with HX711 load cell amplifiers for precise weight measurement and mass monitoring.</p>
+<p>The project integrates an I2C Liquid Crystal Display (LCD) for real-time display of sensor readings and system status messages. All sketches are programmed using the Arduino IDE and require installation of the HX711_ADC and LiquidCrystal_I2C libraries.</p>
+</section>
+<section id="system-components">
+<h2>System Components<a class="headerlink" href="#system-components" title="Link to this heading"></a></h2>
+<p><strong>Arduino Sketches:</strong></p>
+<ul class="simple">
+<li><p>Continuous Stirred Tank Reactor with automated inlet/outlet valve control</p></li>
+</ul>
+<p><strong>Hardware Requirements:</strong></p>
+<ul class="simple">
+<li><p>HX711 Load Cell Amplifier</p></li>
+<li><p>Digital Load Cell Sensor (weight transducer)</p></li>
+<li><p>16x2 I2C LCD Display</p></li>
+<li><p>Arduino microcontroller (compatible board)</p></li>
+<li><p>Inlet and outlet control valves</p></li>
+<li><p>Tare/reset button</p></li>
+</ul>
+<p><strong>Software Libraries:</strong></p>
+<ul class="simple">
+<li><p>HX711_ADC - Load cell amplifier interface library</p></li>
+<li><p>LiquidCrystal_I2C - I2C LCD display control library</p></li>
+<li><p>Wire - Arduino I2C communication protocol</p></li>
+</ul>
+</section>
+<section id="dependencies-and-installation">
+<h2>Dependencies and Installation<a class="headerlink" href="#dependencies-and-installation" title="Link to this heading"></a></h2>
+<p>The following libraries are required for this project:</p>
+<p><strong>HX711_ADC Library</strong></p>
+<p>The HX711_ADC library provides the interface for communicating with HX711 load cell amplifiers. This library is licensed under the MIT License.</p>
+<p>Repository: <a class="reference external" href="https://github.com/olkal/HX711_ADC">https://github.com/olkal/HX711_ADC</a></p>
+<p><strong>LiquidCrystal_I2C Library</strong></p>
+<p>The LiquidCrystal_I2C library enables control of 16x2 LCD displays via I2C protocol, simplifying wiring and communication.</p>
+<p>Repository: <a class="reference external" href="https://github.com/johnrickman/LiquidCrystal_I2C.git">https://github.com/johnrickman/LiquidCrystal_I2C.git</a></p>
+<p><strong>Installation:</strong></p>
+<p>Install both libraries through the Arduino IDE Library Manager or by cloning the repositories into your local Arduino libraries directory.</p>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<p><strong>Load Cell Measurement:</strong></p>
+<ul class="simple">
+<li><p>Precise mass monitoring using HX711 amplifier</p></li>
+<li><p>Calibration support with standard weights</p></li>
+<li><p>Real-time weight display on LCD</p></li>
+</ul>
+<p><strong>Display Interface:</strong></p>
+<ul class="simple">
+<li><p>16x2 LCD display with I2C address configuration (0x27)</p></li>
+<li><p>Unit conversion (grams to ounces)</p></li>
+<li><p>Status messages and system feedback</p></li>
+</ul>
+<p><strong>CSTR Automated Control:</strong></p>
+<ul class="simple">
+<li><p>Automatic inlet/outlet valve regulation based on mass thresholds</p></li>
+<li><p>Configurable weight setpoints</p></li>
+<li><p>Overload protection and alarm functionality</p></li>
+</ul>
+<p><strong>Data Processing:</strong></p>
+<ul class="simple">
+<li><p>Weight filtering and stabilization</p></li>
+<li><p>Conversion between measurement units</p></li>
+<li><p>Threshold-based control logic</p></li>
+</ul>
+</section>
+<section id="project-structure">
+<h2>Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading"></a></h2>
+<p>The project consists of the following files:</p>
+<ul class="simple">
+<li><p>bstr.ino - Batch Stirred Tank Reactor control sketch</p></li>
+<li><p>cstr.ino - Continuous Stirred Tank Reactor control sketch</p></li>
+<li><p>readme.md - Project documentation</p></li>
+</ul>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>The HX711_ADC library is licensed under the MIT License. Please refer to the library repository for detailed license information and terms.</p>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Calibrate the load cell using a standard 100g weight before deployment</p></li>
+<li><p>Configure the I2C LCD address (default: 0x27) according to your hardware setup</p></li>
+<li><p>Adjust the calibration factor in the code based on your specific load cell specifications</p></li>
+<li><p>Ensure proper wiring of all I2C devices to avoid communication errors</p></li>
+<li><p>Use appropriate power supply ratings for the Arduino and peripheral devices</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rtd_cell_control.html" class="btn btn-neutral float-right" title="Residence Time Distribution Cell Control Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

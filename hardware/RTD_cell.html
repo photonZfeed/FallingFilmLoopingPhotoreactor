@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residence Time Distribution Measurement Cell &mdash; FallingFilmLoopingPhotoreactor  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Software" href="../software/index.html" />
+    <link rel="prev" title="Continuous Batch Stirred Tank Reactor (CSTR)" href="cstr_overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FallingFilmLoopingPhotoreactor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Hardware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="materials/index.html">Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstr.html">Automated Batch Stirred Tank Reactor (ABSTR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cstr_overview.html">Continuous Batch Stirred Tank Reactor (CSTR)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Residence Time Distribution Measurement Cell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-3d-printed-components-click-to-download">Required 3D-Printed Components (Click to Download)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-hardware-components">Required Hardware Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assembly-instructions">Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operation">Operation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code">Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FallingFilmLoopingPhotoreactor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Hardware</a></li>
+      <li class="breadcrumb-item active">Residence Time Distribution Measurement Cell</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/RTD_cell.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="residence-time-distribution-measurement-cell">
+<h1>Residence Time Distribution Measurement Cell<a class="headerlink" href="#residence-time-distribution-measurement-cell" title="Link to this heading"></a></h1>
+<section id="required-3d-printed-components-click-to-download">
+<h2>Required 3D-Printed Components (Click to Download)<a class="headerlink" href="#required-3d-printed-components-click-to-download" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/tree/main/00_CAD">2x Analytic cells (2 LED halfcells, 2 photoresistor halfcells, available with 1, 2 and 3 mm inner diameter)</a></p></li>
+<li><p><a class="reference external" href="../_static/cad/base_plate.stl">base plate bricklet casing</a></p></li>
+</ul>
+</section>
+<section id="required-hardware-components">
+<h2>Required Hardware Components<a class="headerlink" href="#required-hardware-components" title="Link to this heading"></a></h2>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/bricklets.png"><img alt="Required Bricklets." src="../_images/bricklets.png" style="width: 90%;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tinkerforge.com/en/doc/Hardware/Bricks/Master_Brick.html">Master brick (2.0)</a></p></li>
+<li><p><a class="reference external" href="https://www.tinkerforge.com/de/shop/industrial-analog-out-v2-bricklet.html">Industrial analog out bricklet (2.0)</a></p></li>
+<li><p><a class="reference external" href="https://www.tinkerforge.com/de/shop/industrial-dual-analog-in-v2-bricklet.html">Industrial analog in bricklet (2.1)</a></p></li>
+<li><p>External power supply</p></li>
+<li><p>USB-A to USB-C cable</p></li>
+<li><p>2x LEDs</p></li>
+<li><p><a class="reference external" href="materials/00_Electronics/06_Other_Small_Parts/photoresistor.rst">2 x photoresistors</a></p></li>
+<li><p>2x Resistors (10 kΩ)</p></li>
+<li><p>2x Connections between in/out and master brick</p></li>
+<li><p>2x small screws for the top of the analytic cells (M3)</p></li>
+<li><p>8x screws for the sides of the analytic cells (M3)</p></li>
+<li><p>8x Nuts (+2x nuts in the analytic halfcells for the LEDs)</p></li>
+<li><p>electrical wire (preferably in 2 different colors)</p></li>
+<li><p>(Through connectors for photoresistors, resistors and electrical wire / Electrical insulating tapes)</p></li>
+</ul>
+</section>
+<section id="assembly-instructions">
+<h2>Assembly Instructions<a class="headerlink" href="#assembly-instructions" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/Cell_components.png"><img alt="Components for connecting the analytic cells." src="../_images/Cell_components.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 1: Components for connecting the analytic cells.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Put the LEDs in the LED halfcells on the outside of the cells (backside of the cells in the figure).</p></li>
+<li><p>Screw one of the small screws on the top of the LED halfcell to fix the LED in the cell. (Make sure a nut is placed in the slid of the halfcell).</p></li>
+<li><p>Put the photoresistors in the photoresistor half cells (photoresistor in the whole, wires to the outside of the cell).</p></li>
+<li><p>Use the bigger screws to fix one LED to a photoresistor halfcell and repeat with the other cells.</p></li>
+</ol>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/bricklets.png"><img alt="Bricklets for the setup" src="../_images/bricklets.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 2: Bricklets for the setup</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>Connect the photoresistors to the industrial dual analog in bricklet as shown in Figure 2 with the electrical wires.
+Make sure to separate the wires apart from the shown connections using the through connectors and/or electrical insulating tape.</p></li>
+</ol>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/photoresistors.png"><img alt="Sketch on how to connect the photoresistors to the bricklet." src="../_images/photoresistors.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 3: Sketch on how to connect the photoresistors to the bricklet.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="6">
+<li><p>Connect the LEDs to the industrial analog out bricklet as shown in Figure 3 with the electrical wires.</p></li>
+</ol>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/LEDs.png"><img alt="Sketch on how to connect the LEDs to the bricklet." src="../_images/LEDs.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 4: Sketch on how to connect the LEDs to the bricklet.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/cables.png"><img alt="Cables to connect the bricklets." src="../_images/cables.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 5: Cables to connect the bricklets.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="7">
+<li><p>Connect the industrial dual analog in and the industrial analog out bricklets to the master brickletr using the Plug cable 7P-10P.</p></li>
+</ol>
+<p>The setup should look like this afterwards:</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/Alex_setup.png"><img alt="Example setup." src="../_images/Alex_setup.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 6: Example setup.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="operation">
+<h2>Operation<a class="headerlink" href="#operation" title="Link to this heading"></a></h2>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h3>
+<p>First the setup needs to be connected to a PC with the USB-A to USB-C cable.
+For the residence time distribution measurements, one cell has to be fixed on the capillary before and one after the reactor.
+As a tracer for the measurement, Methylene Blue with a concentration of 1 g/L for an aqueous system or 0.8 g/L in acetonitrile is suggested.</p>
+</section>
+<section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h3>
+<p>To operate the setup, the following code is needed: Dynamic_Plot_new.py
+The code is available here: <a class="reference external" href="https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/blob/main/02_Software/02_RTD_Cell_Control.py">https://github.com/photonZfeed/FallingFilmLoopingPhotoreactor/blob/main/02_Software/02_RTD_Cell_Control.py</a>.
+Make sure all needed packages for the code are installed and the UID for industrial analog in and out in the code is changed to the once used in the setup.
+The UIDs for industrial analog in and out can be checked with brickviewer, once the setup is connected to the PC.
+To open the measurement window, run the code.
+The following window should open:</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/Measurement_window.png"><img alt="Measurement window." src="../_images/Measurement_window.png" style="width: 90%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure 7: Measurement window.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Before measurement can start the LEDs must be turned on for at least 60 sec. by pressing “Start LED”.
+This is to ensure a stable signal from the photoresistors before measurements start.
+Clicking “Start Measurement” will start the Liveplot and the “Save data” button allows to save the data from the measurement.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cstr_overview.html" class="btn btn-neutral float-left" title="Continuous Batch Stirred Tank Reactor (CSTR)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../software/index.html" class="btn btn-neutral float-right" title="Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shibu Naskar, Daniel Kowalczyk et al.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
