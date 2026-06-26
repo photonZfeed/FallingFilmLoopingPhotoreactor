@@ -38,7 +38,7 @@ $$
 
 ## Results
 
-The figures and table below summarize the results of the RTD analysis as a function of external flow rate.
+The figures and table below summarize the results of the RTD analysis as a function of external flow rate. The Bodenstein number is reported together with the half-width of its 95 % confidence interval (Bo ± CI) and the coefficient of determination $R^2$ of the fit.
 
 ### Mean Residence Time and Bodenstein number
 
@@ -49,6 +49,8 @@ The figures and table below summarize the results of the RTD analysis as a funct
       <th>Mean Residence Time (s)</th>
       <th>Hydrodynamic Mean Residence Time (s)</th>
       <th>Bodenstein Number (1)</th>
+      <th>95 % CI (1)</th>
+      <th>R² (1)</th>
     </tr>
   </thead>
   <tbody>
@@ -57,30 +59,40 @@ The figures and table below summarize the results of the RTD analysis as a funct
       <td>272.02</td>
       <td>363.64</td>
       <td>0.56</td>
+      <td>0.01</td>
+      <td>0.85</td>
     </tr>
     <tr>
       <td>5.0</td>
       <td>174.05</td>
       <td>240.00</td>
       <td>1.13</td>
+      <td>0.03</td>
+      <td>0.90</td>
     </tr>
     <tr>
       <td>10.0</td>
       <td>119.29</td>
       <td>120.00</td>
       <td>0.53</td>
+      <td>0.02</td>
+      <td>0.90</td>
     </tr>
     <tr>
       <td>20.0</td>
       <td>80.91</td>
       <td>60.00</td>
       <td>0.58</td>
+      <td>0.02</td>
+      <td>0.91</td>
     </tr>
     <tr>
       <td>40.0</td>
       <td>73.21</td>
       <td>30.00</td>
       <td>0.44</td>
+      <td>0.02</td>
+      <td>0.90</td>
     </tr>
   </tbody>
 </table>

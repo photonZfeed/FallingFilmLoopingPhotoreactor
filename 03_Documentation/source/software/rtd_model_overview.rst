@@ -12,6 +12,7 @@ Contents
 - ``00_Processed_Data/``: Processed and evaluated ``.csv`` files.
 - ``01_Figures/``: Plots of the RTD analysis.
 - ``main.ipynb``: Jupyter Notebook with RTD analysis code.
+- ``main.py``: Jupytext mirror of the notebook exposing the analysis functions as an importable module.
 
 Installation
 --------------
@@ -41,6 +42,20 @@ The mean residence time :math:`\bar{\tau}` is calculated as the first moment of 
 
     \bar{\tau} = \int_0^\infty t \cdot E_{\mathrm{exp}}(t) \, dt
 
+The Bodenstein number :math:`\mathrm{Bo}` is obtained by fitting the simulated exit age distribution :math:`E_{\mathrm{sim}}(t)` to the experimental one by nonlinear least squares, minimizing the sum of squared residuals over the experimental time range:
+
+.. math::
+
+    \min_{\mathrm{Bo}} \; \sum_i \left( E_{\mathrm{sim}}(t_i; \bar{\tau}, \mathrm{Bo}) - E_{\mathrm{exp}}(t_i) \right)^2
+
+The goodness of fit is quantified by the coefficient of determination :math:`R^2`, evaluated over the experimental time range. A 95 % confidence interval for the fitted Bodenstein number is estimated from the linearized (Gauss–Newton) covariance of the nonlinear least-squares problem,
+
+.. math::
+
+    \mathrm{Var}(\mathrm{Bo}) = \frac{s^2}{\sum_i \left( \partial E_{\mathrm{sim}}(t_i) / \partial \mathrm{Bo} \right)^2}, \qquad s^2 = \frac{1}{n - 1} \sum_i \left( E_{\mathrm{exp}}(t_i) - E_{\mathrm{sim}}(t_i) \right)^2,
+
+where the parameter sensitivity :math:`\partial E_{\mathrm{sim}} / \partial \mathrm{Bo}` is computed by finite differences and the reported half-width is :math:`1.96\,\sqrt{\mathrm{Var}(\mathrm{Bo})}`.
+
 Results
 --------
 
@@ -49,19 +64,48 @@ The figures and table below summarize the results of the RTD analysis as a funct
 Mean Residence Time and Bodenstein number
 ------------------------------------------
 
-+---------------------------+------------------------------+--------------------------------------+------------------------+
-| Flow Rate (mL min⁻¹)      | Mean Residence Time (s)      | Hydrodynamic Mean Residence Time (s) | Bodenstein Number (1)  |
-+===========================+==============================+======================================+========================+
-| 3.3                       | 272.02                       | 363.64                               | 0.56                   |
-+---------------------------+------------------------------+--------------------------------------+------------------------+
-| 5.0                       | 174.05                       | 240.00                               | 1.13                   |
-+---------------------------+------------------------------+--------------------------------------+------------------------+
-| 10.0                      | 119.29                       | 120.00                               | 0.53                   |
-+---------------------------+------------------------------+--------------------------------------+------------------------+
-| 20.0                      | 80.91                        | 60.00                                | 0.58                   |
-+---------------------------+------------------------------+--------------------------------------+------------------------+
-| 40.0                      | 73.21                        | 30.00                                | 0.44                   |
-+---------------------------+------------------------------+--------------------------------------+------------------------+
+The Bodenstein number is reported with the half-width of its 95 % confidence interval (Bo ± CI).
+
+.. list-table::
+   :header-rows: 1
+   :widths: 16 18 24 16 10 8
+
+   * - Flow Rate (mL min⁻¹)
+     - Mean Residence Time (s)
+     - Hydrodynamic Mean Residence Time (s)
+     - Bodenstein Number (1)
+     - 95 % CI (1)
+     - R² (1)
+   * - 3.3
+     - 272.02
+     - 363.64
+     - 0.56
+     - 0.01
+     - 0.85
+   * - 5.0
+     - 174.05
+     - 240.00
+     - 1.13
+     - 0.03
+     - 0.90
+   * - 10.0
+     - 119.29
+     - 120.00
+     - 0.53
+     - 0.02
+     - 0.90
+   * - 20.0
+     - 80.91
+     - 60.00
+     - 0.58
+     - 0.02
+     - 0.91
+   * - 40.0
+     - 73.21
+     - 30.00
+     - 0.44
+     - 0.02
+     - 0.90
 
 .. figure:: ../../../02_Software/00_RTD_Model/01_Figures/tau_Bo_plot.png
     :alt: Figure 1

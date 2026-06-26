@@ -20,6 +20,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 from scipy.optimize import minimize
 from scipy.integrate import trapezoid, cumulative_trapezoid
 from rtdpy import AD_cc
@@ -275,13 +276,13 @@ def process_file(file, t_end=None, path="experimental_data/", window_size=10, Bo
 
     Returns
     -------
-    preprocessed_data : pd.DataFrame
-        A DataFrame containing the preprocessed data.
+    processed_data : pd.DataFrame
+        A DataFrame containing the processed data.
     E_sim : np.ndarray
         Simulated exit age distribution.
 
     """
-    
+
     preprocessed_data = preprocessing(file, path, window_size)  # preprocess the data
 
 
@@ -296,7 +297,7 @@ def process_file(file, t_end=None, path="experimental_data/", window_size=10, Bo
         nan_cols = {col: np.nan for col in preprocessed_data.columns if col != "Time (s)"}
         ext_data = pd.DataFrame({"Time (s)": time_ext, **nan_cols})
         processed_data = pd.concat([preprocessed_data, ext_data], ignore_index=True)
-         
+
     E_sim, F_sim = calculate_RTD_functions(processed_data, tau, Bo) # calculate the exit age distribution and exit age distribution function
 
     processed_data["E_sim_out (s-1)"] = E_sim  # add the simulated exit age distribution to
@@ -305,6 +306,26 @@ def process_file(file, t_end=None, path="experimental_data/", window_size=10, Bo
     processed_data.attrs["Flow Rate (mL min-1)"] = preprocessed_data.attrs["Flow Rate (mL min-1)"]  # add the flow rate to the processed data
     processed_data.attrs["Residence Time (s)"] = tau  # add the residence time to the processed data
     processed_data.attrs["Hydrodynamic Residence Time (s)"] = V / (preprocessed_data.attrs["Flow Rate (mL min-1)"] * 1e-6 / 60)  # add the hydrodynamic residence time to the processed data
+
+    # fit statistics: evaluated only over the experimental time range
+    # (rows beyond the experiment were padded with NaN experimental values)
+    exp_mask = processed_data["E_exp_out (s-1)"].notna().values  # experimental time range
+    E_exp_fit = processed_data["E_exp_out (s-1)"].values[exp_mask]
+    E_sim_fit = processed_data["E_sim_out (s-1)"].values[exp_mask]
+
+    n = E_exp_fit.size
+    processed_data.attrs["R2"] = r2_score(E_exp_fit, E_sim_fit)
+    residuals = E_exp_fit - E_sim_fit
+
+    # 95% confidence interval on the fitted Bodenstein number from the linearized (Gauss-Newton) covariance of the nonlinear least-squares fit:
+    #   Var(Bo) = s^2 / sum((dE_sim/dBo)^2),  s^2 = SSE / (n - p),  p = 1 parameter
+    p = 1  # number of fitted parameters (only Bo)
+    s2 = np.sum(residuals**2) / (n - p)  # residual variance of the fit
+    h = 1e-4 * Bo  # relative finite-difference step for the parameter sensitivity
+    E_sim_pert, _ = calculate_RTD_functions(processed_data, tau, Bo + h)  # simulate at Bo + h
+    dE_dBo = (E_sim_pert[exp_mask] - E_sim_fit) / h  # sensitivity dE_sim/dBo over the experimental range
+    Bo_std_error = np.sqrt(s2 / np.sum(dE_dBo**2))  # standard error of the fitted Bo
+    processed_data.attrs["95% CI"] = 1.96 * Bo_std_error  # half-width of the 95% CI on Bo
 
     if export_path:
         # export the processed data to a csv file
@@ -420,8 +441,8 @@ def create_comparison_plots(processed_data_list, t_end, colors=cycle, store_path
         axs[j//3,j%3].plot(processed_data["Time (s)"], processed_data["E_sim_out (s-1)"], label="sim.", linestyle="--", color=colors[1])
         axs[j//3,j%3].set_title(chr(j+97) +") "+str(processed_data.attrs["Flow Rate (mL min-1)"]) +r" mL min$^{-1}$", y=-0.4, fontsize=10)
 
-        # add fitted Bo-number at the upper left corner of the subplot
-        axs[j//3,j%3].text(0.03, 0.97, r"$\mathrm{Bo} = $"+str(round(Bo_opt,2)), transform=axs[j//3,j%3].transAxes, ha='left', va='top', fontsize=10)
+        # add fitted Bo-number and its 95% confidence interval at the upper left corner of the subplot
+        axs[j//3,j%3].text(0.03, 0.97, r"$\mathrm{Bo} = $"+str(round(Bo_opt,2))+r" $\pm$ "+str(round(processed_data.attrs["95% CI"],2)), transform=axs[j//3,j%3].transAxes, ha='left', va='top', fontsize=10)
         j += 1
 
     # plot all simulated E functions in axs[1,2]
@@ -530,13 +551,17 @@ def create_all_simulated_RTDs_plot(processed_data_list, t_end, store_path=None, 
 # residence_times = [processed_data.attrs["Residence Time (s)"] for processed_data in processed_data_list]
 # hydrodynamic_residence_times = [processed_data.attrs["Hydrodynamic Residence Time (s)"] for processed_data in processed_data_list]
 # Bodenstein_numbers = [processed_data.attrs["Bodenstein Number (1)"] for processed_data in processed_data_list]
+# confidence_intervals = [processed_data.attrs["95% CI"] for processed_data in processed_data_list]
+# R2_scores = [processed_data.attrs["R2"] for processed_data in processed_data_list]
 
 # # create a dataframe with the flow rates, residence times, and Bodenstein numbers
 # summary_df = pd.DataFrame({
 #     "Flow Rate (mL min-1)": flow_rates,
 #     "Residence Time (s)": residence_times,
 #     "Hydrodynamic Residence Time (s)": hydrodynamic_residence_times,
-#     "Bodenstein Number (1)": Bodenstein_numbers
+#     "Bodenstein Number (1)": Bodenstein_numbers,
+#     "95% Confidence Interval (1)": confidence_intervals,
+#     "R2 Score (1)": R2_scores,
 # })
 
 
